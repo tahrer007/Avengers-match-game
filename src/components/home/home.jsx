@@ -12,7 +12,7 @@ class Home extends React.Component {
 
    
     return (
-      <div>
+      <div >
         <Link to="/Thegame" >start the gameBoard</Link> <br/>
         <Link to="/scores">get scores </Link>
       </div>
