@@ -1,5 +1,5 @@
 import React from "react";
-import GameBoard from "../gameBoard/gameBoard";
+import GameBoard from "../Game/Game";
 import { Link  } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 

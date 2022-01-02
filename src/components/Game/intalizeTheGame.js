@@ -1,6 +1,3 @@
-import React from "react";
-import "./gameBoard.css";
-
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -24,47 +21,15 @@ const fillGameArray = (arrLength) => {
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i]) continue;
-
     do {
       randomInt = getRandomInt(1, numberOfImages);
     } while (pickedImages.includes(randomInt));
-
     pickedImages.push(randomInt);
-    arr[i] = randomInt;
     let secondIndex = getSecondIndex(arr, i + 1, arrLength - 1);
+    arr[i] = randomInt;
     arr[secondIndex] = randomInt;
   }
   return arr;
 };
 
-class GameBoard extends React.Component {
-  state = {
-    level: "",
-    score: "",
-    lives: 3,
-    numberOfCards: 12,
-    isWin: false,
-    isLose: false,
-    cardsArr: [],
-  };
-
-  componentDidMount() {
-    this.setState({
-      cardsArr: fillGameArray(this.state.numberOfCards),
-    });
-  }
-  componentDidUpdate() {
-    console.log(this.state.cardsArr);
-  }
-
-  render() {
-    return (
-      <div className="gameBoardContainer">
-        <div className="gameBoard"> gameBoard</div>
-        <div className="gameData"> game data</div>
-      </div>
-    );
-  }
-}
-
-export default GameBoard;
+export default fillGameArray;
