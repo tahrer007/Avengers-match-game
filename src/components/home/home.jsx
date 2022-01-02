@@ -1,0 +1,19 @@
+import React from "react";
+import GameBoard from "../gameBoard/gameBoard";
+import { Link } from "react-router-dom";
+
+class Home extends React.Component {
+    
+  render() {
+
+   
+    return (
+      <div>
+        <Link to="/Thegame" >start the gameBoard</Link>
+        <Link to="/scores">get scores </Link>
+      </div>
+    );
+  }
+}
+
+export default Home;
