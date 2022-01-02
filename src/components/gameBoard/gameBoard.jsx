@@ -4,9 +4,7 @@ import React from "react";
 
 
 class GameBoards extends React.Component {
-    state={
-        score : 111 ,
-    }
+   
     render() {
       
      return (
