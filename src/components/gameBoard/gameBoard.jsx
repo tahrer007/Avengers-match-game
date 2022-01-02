@@ -1,35 +1,43 @@
 import React from "react";
 import "./gameBoard.css";
 
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+};
 
+const getSecondIndex = (arr, min, max) => {
+  let randomIndex;
 
-const getRandomInt =(min, max) =>{
-   min = Math.ceil(min);
-   max = Math.floor(max);
-   return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
- }
+  do {
+    randomIndex = getRandomInt(min, max);
+  } while (arr[randomIndex]);
+  return randomIndex;
+};
+const fillGameArray = (arrLength) => {
+  let val = 0,
+    randomInt;
+  const numberOfImages = 39;
+  let arr = [...Array(arrLength)].map((x) => val);
+  let pickedImages = [];
 
- 
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i]) continue;
+
+    do {
+      randomInt = getRandomInt(1, numberOfImages);
+    } while (pickedImages.includes(randomInt));
+
+    pickedImages.push(randomInt);
+    arr[i] = randomInt;
+    let secondIndex = getSecondIndex(arr, i + 1, arrLength - 1);
+    arr[secondIndex] = randomInt;
+  }
+  return arr;
+};
 
 class GameBoard extends React.Component {
-  fillGameArray = (arrLength) => {
-    let val = 0 ,randomInt;
-    const numberOfImages = 39 ;
-    let arr = [...Array(arrLength)].map((x) => val); 
-    let pickedImages=[] ;
-
-    for (let i = 0; i < arr.length; i++) {
-      do {
-         randomInt = getRandomInt(1,numberOfImages);
-      }while(pickedImages.includes(randomInt))
-      pickedImages.push(randomInt);
-       arr[i]=randomInt ;
-      
-
-       
-    }
-    console.log(arr)
-  };
   state = {
     level: "",
     score: "",
@@ -42,8 +50,11 @@ class GameBoard extends React.Component {
 
   componentDidMount() {
     this.setState({
-      cardsArr: this.fillGameArray(this.state.numberOfCards),
+      cardsArr: fillGameArray(this.state.numberOfCards),
     });
+  }
+  componentDidUpdate() {
+    console.log(this.state.cardsArr);
   }
 
   render() {
