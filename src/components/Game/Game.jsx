@@ -62,9 +62,11 @@ class Game extends React.Component {
     this.setState({ eachRoundArr: tempArr, flipBackCards: false });
     if (tempArr.length === 2) {
       this.processRoundResults(this.state.cardsArr, tempArr, index);
-      this.setState({ eachRoundArr: [] });
-    } else {
-    }
+      setTimeout(() => {
+        this.setState({ eachRoundArr: [] });
+      }, 1000);
+     
+    } 
   };
   componentDidMount() {
     this.setState({
@@ -77,12 +79,12 @@ class Game extends React.Component {
     console.log(this.state.eachRoundArr) ;*/
     //console.log("winner status : "+this.state.isWin) ;
     // console.log("live status : "+this.state.lives) ;
-    console.log("flip status : " + this.state.flipBackCards);
+    //console.log("flip status : " + this.state.flipBackCards);
     if (!this.state.lives) {
       console.log("you lose the game !! ");
     } else {
       //return (this.state.currentRound.map)
-      console.log("hiii");
+     
     }
   }
 

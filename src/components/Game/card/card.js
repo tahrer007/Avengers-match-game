@@ -10,7 +10,8 @@ class Card extends React.Component {
       id: this.props.id,
       image: this.props.image,
       alreadyGuesed: this.props.alreadyGuesed,
-      currentRound: this.props.currentRound,
+      currentRoundCards: this.props.currentRound,
+      flipCardsBack: this.props.flipCardsBack,
     };
   }
 
@@ -19,19 +20,23 @@ class Card extends React.Component {
   };
 
   flipCard(e, id, image, alreadyGuesed, currentRound) {
-
-    if (currentRound.includes(id) && currentRound.length===1 ) {
-      console.log("undo");
-      e.target.classList.toggle("covered");
-      e.target.classList.toggle(`image${image}`);
-      this.props.flipCardBack(id);
-    }
-    else if (alreadyGuesed.includes(image)) {
+    if (alreadyGuesed.includes(image)) {
       e.target.classList.add("disableClicks");
+    } else if (currentRound.includes(id)) {
+      console.log("undo");
+      e.target.classList.add("covered");
+      e.target.classList.remove(`image${image}`);
+      this.props.flipCardBack(id);
     } else {
-      e.target.classList.toggle("covered");
-      e.target.classList.toggle(`image${image}`);
+      e.target.classList.remove("covered");
+      e.target.classList.add(`image${image}`);
       this.props.flipCard(id, image);
+    }
+  }
+  componentDidUpdate() {
+    console.log(this.state.currentRoundCards);
+    if (this.props.flipCardsBack) {
+      console.log(this.state.currentRoundCards);
     }
   }
 
@@ -41,13 +46,14 @@ class Card extends React.Component {
       //className={"btn-group pull-right " + (this.props.showBulkActions ? 'show' : 'hidden')}
       <div
         className={"card backGround covered"}
+        //className={"card backGround covered " + ((this.props.flipCardsBack && this.state.currentRoundCards.includes(this.state.id)) ? 'covered' : '')}
         onClick={(e) =>
           this.flipCard(
             e,
-            this.state.id,
-            this.state.image,
-            this.state.alreadyGuesed,
-            this.state.currentRound
+            this.props.id,
+            this.props.image,
+            this.props.alreadyGuesed,
+            this.props.currentRound
           )
         }
       >
