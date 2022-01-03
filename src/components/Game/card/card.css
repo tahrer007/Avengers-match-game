@@ -1,0 +1,15 @@
+.card{
+    background-color: turquoise;
+}
+.covered{
+    background-color: tomato;
+    /*background-image: url("../../../assets/image/1.jpg");*/
+}
+
+.backGround{
+    background-position: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
