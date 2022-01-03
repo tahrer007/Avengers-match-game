@@ -2,6 +2,7 @@ import React from "react";
 import "./game.css";
 import fillGameArray from "./intalizeTheGame";
 import Card from "./card/Card";
+import "./card/card.css"
 
 class Game extends React.Component {
   state = {
@@ -14,7 +15,13 @@ class Game extends React.Component {
     cardsArr: [],
   };
 
-  componentDidMount() {
+  flipCard=(index,element)=>{
+
+    console.log(index,element) ;
+    
+
+  } 
+   componentDidMount() {
     this.setState({
       cardsArr: fillGameArray(this.state.numberOfCards),
     });
@@ -32,6 +39,7 @@ class Game extends React.Component {
               key={index}
               image={element}
               id={index}
+              callBack={()=>this.flipCard(index,element)}
             />
           ))}
         </div>
