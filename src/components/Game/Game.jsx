@@ -13,6 +13,7 @@ class Game extends React.Component {
     isWin: false,
     isLose: false,
     cardsArr: [],
+    eachRound :[]
   };
 
   flipCard=(index,element)=>{
