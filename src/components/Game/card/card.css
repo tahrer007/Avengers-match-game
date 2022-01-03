@@ -12,4 +12,6 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+.disableClicks {
+    pointer-events: none;
+}
