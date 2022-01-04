@@ -1,0 +1,29 @@
+.startPage{
+    height: 100%;
+    width: 100%;
+    position: absolute ;
+    top :0 ; 
+    left :0;
+    background-color: wheat;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
+}
+.choicePlayerType{
+    padding: 1em;
+    width :max-content ; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: violet;
+    gap: 1em;      
+}
+.playerBtn{
+    height: 100px;
+    width: 200px;
+    display: inline-block;
+}
+

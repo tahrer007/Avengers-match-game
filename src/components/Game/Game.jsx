@@ -1,10 +1,12 @@
 import React from "react";
-import Card from "./Card";
-import GameResult from "./gameResult";
+import Card from "./card/Card";
+import GameResult from "./gameResult/gameResult";
+import UpdateData from "../../api/update";
+import StartPage from "./startPage/startPage";
 import "./game.css";
-import "./card.css";
+import "./card/card.css";
 import allImages from "../../data/imagesArr";
-
+import getRandomImages from "./js/gatCards";
 import { useState, useEffect } from "react";
 
 /*const easy = 12;
@@ -29,32 +31,13 @@ const hard = 48;*/
   }
 };*/
 
-const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-};
 
-function getRandomImages(allImages, gameCardsNum) {
-  let len = allImages.length,
-    taken = [];
-  let tempArr = [];
-  let random;
-
-  while (gameCardsNum--) {
-    do {
-      random = getRandomInt(0, len - 1);
-    } while (tempArr.includes(random));
-    taken.push(allImages[random]);
-    tempArr.push(random);
-  }
-  return taken;
-}
 function Game() {
   const [cards, setcards] = useState([]);
+  const [start, setStart] = useState(false);
   const [gameScore, setgameScore] = useState(0);
   const [FlipedCardCount, setFlipedCardCount] = useState(0);
-  const [gameLives, setLives] = useState(10);
+  const [gameLives, setLives] = useState(3);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableClick, setdisableClick] = useState(false);
@@ -64,7 +47,6 @@ function Game() {
   const suffleCards = () => {
     let cardsNumbers = 6;
     let takenImages = getRandomImages(allImages, cardsNumbers);
-
     const shuffledCards = [...takenImages, ...takenImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
@@ -80,7 +62,14 @@ function Game() {
   useEffect(() => {
     suffleCards();
   }, []);
-  //end the game
+  //end the game and call update
+  useEffect(() => {
+    if (isWin || !gameLives) {
+      UpdateData("1", "3333333333333333", "tahrer!!");
+    }
+  }, [isWin, gameLives]);
+
+  //win the game
   useEffect(() => {
     if (FlipedCardCount) {
       console.log(FlipedCardCount, cards.length);
@@ -126,6 +115,8 @@ function Game() {
 
   return (
     <div className="gameBoardContainer">
+      {  !start && <StartPage />}
+      
       <div
         className="cardsBoard"
         style={{
@@ -150,7 +141,9 @@ function Game() {
         {FlipedCardCount}
       </div>
 
-      {(isWin || !gameLives) && <GameResult win={isWin} gameScore={gameScore} />}
+      {(isWin || !gameLives) && (
+        <GameResult win={isWin} gameScore={gameScore} />
+      )}
     </div>
   );
 }
