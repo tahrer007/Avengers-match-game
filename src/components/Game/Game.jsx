@@ -54,7 +54,7 @@ function Game() {
   const [cards, setcards] = useState([]);
   const [gameScore, setgameScore] = useState(0);
   const [FlipedCardCount, setFlipedCardCount] = useState(0);
-  const [gameLives, setLives] = useState(3);
+  const [gameLives, setLives] = useState(10);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableClick, setdisableClick] = useState(false);
@@ -80,16 +80,21 @@ function Game() {
   useEffect(() => {
     suffleCards();
   }, []);
-  //end the game 
+  //end the game
   useEffect(() => {
-
-     console.log(gameLives,isWin)
-  }, [gameLives,isWin])
+    if (FlipedCardCount) {
+      console.log(FlipedCardCount, cards.length);
+      if (FlipedCardCount === cards.length / 2) {
+        console.log("you won the game ");
+        setIsWin(true);
+      }
+    }
+  }, [FlipedCardCount]);
   //process choice
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setdisableClick(true);
-    
+
       if (choiceOne.src === choiceTwo.src) {
         setcards((prevCards) => {
           return prevCards.map((card) => {
@@ -102,17 +107,8 @@ function Game() {
         });
         setgameScore((prevScore) => prevScore + 100);
         setFlipedCardCount((prevCount) => prevCount + 1);
-        
-        setTimeout(() => {
-          if(FlipedCardCount===(cards.length/2)){
-            console.log(FlipedCardCount,cards.length);
-            setIsWin(true) ;
-          }
-          
-        }, 100);
         resetChioces();
       } else {
-
         setLives((prevLives) => prevLives - 1);
         resetChioces();
       }
@@ -121,17 +117,13 @@ function Game() {
 
   //reset choices
   const resetChioces = () => {
-    
     setTimeout(() => {
       setdisableClick(false);
       setChoiceOne(null);
       setChoiceTwo(null);
-     
-     
     }, 1000);
-    
   };
-    
+
   return (
     <div className="gameBoardContainer">
       <div
@@ -157,8 +149,8 @@ function Game() {
         game lives : {gameLives} <br />
         {FlipedCardCount}
       </div>
-      
-      {(isWin || !gameLives ) && <GameResult />}
+
+      {(isWin || !gameLives) && <GameResult win={isWin} gameScore={gameScore} />}
     </div>
   );
 }
