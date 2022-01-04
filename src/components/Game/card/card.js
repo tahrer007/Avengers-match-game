@@ -3,7 +3,7 @@ import "./card.css";
 import "./cardImages.css";
 
 class Card extends React.Component {
-  state = this.getInitialState();
+  /*state = this.getInitialState();
 
   getInitialState() {
     return {
@@ -17,7 +17,7 @@ class Card extends React.Component {
 
   reset = () => {
     this.setState(this.getInitialState());
-  };
+  };*/
 
   flipCard(e, id, image, alreadyGuesed, currentRound) {
     if (alreadyGuesed.includes(image)) {
@@ -34,9 +34,9 @@ class Card extends React.Component {
     }
   }
   componentDidUpdate() {
-    console.log(this.state.currentRoundCards);
+    //console.log(this.state.currentRoundCards);
     if (this.props.flipCardsBack) {
-      console.log(this.state.currentRoundCards);
+      //console.log(this.state.currentRoundCards);
     }
   }
 
@@ -57,7 +57,7 @@ class Card extends React.Component {
           )
         }
       >
-        {this.state.image}
+        { this.props.image}
       </div>
     );
   }
