@@ -1,9 +1,9 @@
 import avatarsArr from "../../../../data/avatarsArr";
 import Avatar from "./avatar/avatar";
 import React from "react";
-import { useState, useEffect } from "react";
 import "./newPlayer.css";
 import Create from "../../../../api/create";
+import axios from "axios";
 class NewPlayer extends React.Component {
   state = {
     playerName: "",
@@ -18,9 +18,26 @@ class NewPlayer extends React.Component {
     this.setState({ playerName: event.target.value });
   };
 
-  addPlayer = () => {
-    console.log(this.state.playerAvatar);
-    console.log(this.state.playerName);
+  addPlayer = async (e, name, avatar) => {
+    
+    e.preventDefault();
+    let lastGameScore = 0;
+    this.props.sendPlayerData(name,avatar,lastGameScore)
+
+    try {
+      await axios.post(
+        `https://61d3f514b4c10c001712bb68.mockapi.io/playersData`,
+        {
+          name,
+          avatar,
+          lastGameScore,
+        }
+      );
+    } catch (error) {
+      console.log("the error is : " + error);
+    }
+
+    //
   };
 
   render() {
@@ -46,7 +63,13 @@ class NewPlayer extends React.Component {
             />
           ))}
         </div>
-        <input type="submit" value="done" onClick={this.addPlayer} />
+        <input
+          type="submit"
+          value="done"
+          onClick={(e) =>
+            this.addPlayer(e, this.state.playerName, this.state.playerAvatar)
+          }
+        />
       </div>
     );
   }

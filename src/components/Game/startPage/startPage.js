@@ -8,12 +8,10 @@ const StartPage = () => {
   const [newPlayer, setNewPlayer] = useState(false);
   const [oldplayer, setOldPlayer] = useState(false);
 
-  useEffect(() => {
-  
-  }, [newPlayer, oldplayer]);
+  useEffect(() => {}, [newPlayer, oldplayer]);
 
-  const handleChoice = (avatar) => {
-    console.log("hi from main ", avatar);
+  const passPlayerData = (playerName,avatar,LastGameScore) => {
+    console.log( playerName,avatar,LastGameScore);
   };
   const handlePlayerType = (playerType) => {
     playerType === "new" ? setNewPlayer(true) : setOldPlayer(true);
@@ -39,9 +37,8 @@ const StartPage = () => {
         >
           no
         </button>
-      
       </div>
-      {newPlayer && <NewPlayer />}
+      {newPlayer && <NewPlayer  sendPlayerData = {passPlayerData}/>}
     </div>
   );
 };
