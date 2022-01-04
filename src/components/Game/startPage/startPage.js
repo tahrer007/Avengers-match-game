@@ -1,7 +1,5 @@
 import "./startPage.css";
-
 import NewPlayer from "./newPlayer/newPlayer";
-import react from "react";
 import { useEffect, useState } from "react";
 
 const StartPage = () => {
