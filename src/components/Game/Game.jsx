@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import GameResult from "./gameResult";
 import "./game.css";
 import "./card.css";
 import allImages from "../../data/imagesArr";
@@ -51,13 +52,13 @@ function getRandomImages(allImages, gameCardsNum) {
 }
 function Game() {
   const [cards, setcards] = useState([]);
-  const [fllipedCard, setScore] = useState(0);
+  const [gameScore, setgameScore] = useState(0);
+  const [FlipedCardCount, setFlipedCardCount] = useState(0);
   const [gameLives, setLives] = useState(3);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableClick, setdisableClick] = useState(false);
-  /*const [gameOver, setGameOver] = useState(false);
-  const [isWin, setIsWin] = useState(false);*/
+  const [isWin, setIsWin] = useState(false);
 
   //suffles cards
   const suffleCards = () => {
@@ -79,11 +80,16 @@ function Game() {
   useEffect(() => {
     suffleCards();
   }, []);
+  //end the game 
+  useEffect(() => {
 
+     console.log(gameLives,isWin)
+  }, [gameLives,isWin])
   //process choice
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setdisableClick(true);
+    
       if (choiceOne.src === choiceTwo.src) {
         setcards((prevCards) => {
           return prevCards.map((card) => {
@@ -94,10 +100,19 @@ function Game() {
             }
           });
         });
-
-        setScore((prevScore) => prevScore + 100);
+        setgameScore((prevScore) => prevScore + 100);
+        setFlipedCardCount((prevCount) => prevCount + 1);
+        
+        setTimeout(() => {
+          if(FlipedCardCount===(cards.length/2)){
+            console.log(FlipedCardCount,cards.length);
+            setIsWin(true) ;
+          }
+          
+        }, 100);
         resetChioces();
       } else {
+
         setLives((prevLives) => prevLives - 1);
         resetChioces();
       }
@@ -106,14 +121,17 @@ function Game() {
 
   //reset choices
   const resetChioces = () => {
+    
     setTimeout(() => {
+      setdisableClick(false);
       setChoiceOne(null);
       setChoiceTwo(null);
-      setdisableClick(false);
+     
+     
     }, 1000);
+    
   };
-
-
+    
   return (
     <div className="gameBoardContainer">
       <div
@@ -135,9 +153,12 @@ function Game() {
       </div>
 
       <div className="gameData">
-        game scores : {fllipedCard * 100} <br />
+        game scores : {gameScore} <br />
         game lives : {gameLives} <br />
+        {FlipedCardCount}
       </div>
+      
+      {(isWin || !gameLives ) && <GameResult />}
     </div>
   );
 }
