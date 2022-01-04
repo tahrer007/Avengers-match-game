@@ -1,0 +1,16 @@
+.card{
+    background-color: turquoise;
+    box-sizing: border-box;
+    
+}
+
+
+.disableClicks {
+    pointer-events: none;
+}
+
+
+.image{
+   max-width: 100%;
+    max-height: 100%;
+}

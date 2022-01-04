@@ -1,7 +1,8 @@
 import React from "react";
+import Card from "./Card";
 import "./game.css";
-import Card from "./card/Card";
-import "./card/card.css";
+import "./card.css";
+
 import allImages from "../../data/imagesArr";
 
 import { useState, useEffect } from "react";
@@ -51,11 +52,14 @@ function getRandomImages(allImages, gameCardsNum) {
 }
 function Game() {
   const [cards, setcards] = useState([]);
-  const [gameScore, setScores] = useState(0);
+  const [gameScore, setScore] = useState(0);
+  const [gameLives, setLives] = useState(3);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
 
   //suffles cards
   const suffleCards = () => {
-    let cardsNumbers = 12;
+    let cardsNumbers = 6;
     let takenImages = getRandomImages(allImages, cardsNumbers);
 
     const shuffledCards = [...takenImages, ...takenImages]
@@ -64,23 +68,60 @@ function Game() {
     setcards(shuffledCards);
   };
 
+  //handle choice
+  const handleChoice = (card) => {
+    //console.log(card)
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
+  //process choice
   useEffect(() => {
-    console.log(cards);
-  }, [cards]);
+    if (choiceOne && choiceTwo) {
+      if (choiceOne.src === choiceTwo.src) {
+        setcards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.src === choiceOne.src) {
+              return { ...card, matched: true };
+            } else {
+              return card;
+            }
+          });
+        });
+
+        setScore((prevScore) => prevScore + 100);
+        resetChioces();
+      } else {
+        setLives((prevLives) => prevLives - 1);
+        resetChioces();
+      }
+    }
+  }, [choiceOne, choiceTwo]);
+
+  //reset choices
+  const resetChioces = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+  };
+
+  console.log(cards)
 
   return (
     <div className="gameBoardContainer">
       <div
-        className="gameBoard"
+        className="cardsBoard"
         style={{
           gridTemplateColumns: `repeat(4, 1fr)`,
-          gridTemplateRows: `repeat(4, 1fr)`,
+          gridTemplateRows: `repeat(6, 1fr)`,
         }}
-      ></div>
+      >
+        {cards.map((card) => (
+          <Card key={card.id} card={card} handleChoice={handleChoice} />
+        ))}
+      </div>
+
       <div className="gameData">
-        {" "}
-        game data
-        <button onClick={() => suffleCards()}> hi tahrer !! </button>
+        game scores : {gameScore} <br />
+        game lives : {gameLives} <br />
+        <button onClick={suffleCards}> hi tahrer !! </button>
       </div>
     </div>
   );
