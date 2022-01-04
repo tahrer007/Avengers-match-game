@@ -6,7 +6,6 @@ export default function card({ card ,handleChoice,flipped,disabled }) {
     handleChoice(card) ; 
     }
     
-
   }
  
   return (

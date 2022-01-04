@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./Card";
 import "./game.css";
 import "./card.css";
-
 import allImages from "../../data/imagesArr";
 
 import { useState, useEffect } from "react";
@@ -11,7 +10,7 @@ const easy = 12;
 const intermediate = 24;
 const hard = 48;
 
-const cardsINrow = (level) => {
+/*const cardsINrow = (level) => {
   switch (level) {
     case "easy": {
       return easy / 3;
@@ -27,7 +26,7 @@ const cardsINrow = (level) => {
       return hard / 6;
     }
   }
-};
+};*/
 
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
@@ -57,8 +56,8 @@ function Game() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableClick, setdisableClick] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
-  const [isWin, setIsWin] = useState(false);
+  /*const [gameOver, setGameOver] = useState(false);
+  const [isWin, setIsWin] = useState(false);*/
 
   //suffles cards
   const suffleCards = () => {
