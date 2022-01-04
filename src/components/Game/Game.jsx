@@ -7,9 +7,9 @@ import allImages from "../../data/imagesArr";
 
 import { useState, useEffect } from "react";
 
-const easy = 12;
+/*const easy = 12;
 const intermediate = 24;
-const hard = 48;
+const hard = 48;*/
 
 /*const cardsINrow = (level) => {
   switch (level) {
