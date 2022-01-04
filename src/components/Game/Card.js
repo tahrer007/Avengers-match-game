@@ -1,25 +1,33 @@
 import "./card.css";
-export default function card({ card ,handleChoice }) {
+export default function card({ card ,handleChoice,flipped,disabled }) {
 
   const handleClick =()=>{
-    handleChoice(card)
+    if(!disabled){
+    handleChoice(card) ; 
+    }
+    
 
   }
  
   return (
-    <div className="card">
+    <div className="card"  >
+      <div className={flipped ? "flipped":""}>
       <img
-        className="front image"
+        className="front"
         src={process.env.PUBLIC_URL + `${card.src}`}
+        alt="card front"
+       
+      />
+
+      <img
+        className="back"
+        src={process.env.PUBLIC_URL + "/images/cover.jpg"}
         alt="card back"
         onClick={handleClick}
       />
 
-      <img
-        className="back image"
-        src={process.env.PUBLIC_URL + "/images/cover.jpg"}
-        alt="card back"
-      />
+      </div>
+      
     </div>
   );
 }

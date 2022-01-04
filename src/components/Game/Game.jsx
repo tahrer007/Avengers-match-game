@@ -52,10 +52,13 @@ function getRandomImages(allImages, gameCardsNum) {
 }
 function Game() {
   const [cards, setcards] = useState([]);
-  const [gameScore, setScore] = useState(0);
+  const [fllipedCard, setScore] = useState(0);
   const [gameLives, setLives] = useState(3);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disableClick, setdisableClick] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+  const [isWin, setIsWin] = useState(false);
 
   //suffles cards
   const suffleCards = () => {
@@ -73,9 +76,15 @@ function Game() {
     //console.log(card)
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
+  //start the game
+  useEffect(() => {
+    suffleCards();
+  }, []);
+
   //process choice
   useEffect(() => {
     if (choiceOne && choiceTwo) {
+      setdisableClick(true);
       if (choiceOne.src === choiceTwo.src) {
         setcards((prevCards) => {
           return prevCards.map((card) => {
@@ -98,11 +107,13 @@ function Game() {
 
   //reset choices
   const resetChioces = () => {
-    setChoiceOne(null);
-    setChoiceTwo(null);
+    setTimeout(() => {
+      setChoiceOne(null);
+      setChoiceTwo(null);
+      setdisableClick(false);
+    }, 1000);
   };
 
-  console.log(cards)
 
   return (
     <div className="gameBoardContainer">
@@ -114,14 +125,19 @@ function Game() {
         }}
       >
         {cards.map((card) => (
-          <Card key={card.id} card={card} handleChoice={handleChoice} />
+          <Card
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
+            disabled={disableClick}
+          />
         ))}
       </div>
 
       <div className="gameData">
-        game scores : {gameScore} <br />
+        game scores : {fllipedCard * 100} <br />
         game lives : {gameLives} <br />
-        <button onClick={suffleCards}> hi tahrer !! </button>
       </div>
     </div>
   );
