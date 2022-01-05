@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "./card/Card";
 import GameResult from "./gameResult/gameResult";
-import UpdateData from "../../api/update";
 import StartPage from "./startPage/startPage";
 import "./game.css";
 import "./card/card.css";
@@ -51,13 +50,7 @@ function Game() {
   useEffect(() => {
     suffleCards();
   }, []);
-  //end the game and call update
-  useEffect(() => {
-    if (isWin || !gameLives) {
-      UpdateData("1", "3333333333333333", "tahrer!!");
-    }
-  }, [isWin, gameLives]);
-
+  
   //check if win the game
   useEffect(() => {
     if (FlipedCardCount) {

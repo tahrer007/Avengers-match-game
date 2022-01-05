@@ -48,10 +48,6 @@ class OldPlayer extends React.Component {
     }
   };
 
-  componentDidUpdate() {
-    //console.log(this.state.isPlayerFound, this.state.playersArr);
-  }
-
   render() {
     return (
       <div className="oldPlayer">

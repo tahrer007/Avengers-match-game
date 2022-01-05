@@ -1,18 +1,15 @@
 import axios from "axios";
-const UpdateData = async ({ id, lastGameScore, name }) => {
-  console.log(lastGameScore);
-
-/*  try {
+const UpdateData = async (id, lastGameScore) => {
+  try {
     await axios.put(
-      `https://61d3f514b4c10c001712bb68.mockapi.io/scores/${id}`,
+      `https://61d3f514b4c10c001712bb68.mockapi.io/playersData/${id}`,
       {
-        name,
         lastGameScore,
       }
     );
   } catch (error) {
-      console.log(error )
-  }*/
+    console.log("the error is : " + error);
+  }
 };
 
-export default UpdateData ; 
+export default UpdateData;

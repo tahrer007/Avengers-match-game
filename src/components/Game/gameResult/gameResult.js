@@ -1,25 +1,21 @@
-import "./gameResult.css"
-import { useEffect } from "react"
-import Create from "../../../api/create"
-export default function GameResult({win,gameScore,player}) {
+import "./gameResult.css";
+import { useEffect } from "react";
+import Create from "../../../api/create";
+import UpdateData from "../../../api/update";
 
-    useEffect(() => {
-        if(player.isOldPlayer){
-                console.log(player)
+export default function GameResult({ win, gameScore, player }) {
+  useEffect(() => {
+    if (player.isOldPlayer) {
+      UpdateData(player.id, gameScore);
+    } else {
+      Create(player.name, player.avatar, gameScore);
+    }
+  }, []);
 
-        }else {
-            console.log(false)
-            Create(player.name, player.avatar,gameScore)
-
-        }
-        
-    }, [])
-    
-    return (
-        <div className="gameResult">
-        
-            {"win : " + win }
-            {"game score : " +gameScore }
-        </div>
-    )
+  return (
+    <div className="gameResult">
+      {"win : " + win}
+      {"game score : " + gameScore}
+    </div>
+  );
 }
