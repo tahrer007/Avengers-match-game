@@ -1,9 +1,8 @@
 import "./startPage.css";
 import NewPlayer from "./newPlayer/newPlayer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import OldPlayer from "./oldPlayer/oldPlayer";
 import GameLevels from "./gameLevel/gameLevels";
-import PlayerData from "./playerData/playerData";
 
 const StartPage = ({ toChooseLevel, getPlayerData }) => {
   const [newPlayer, setNewPlayer] = useState(false);
@@ -16,7 +15,6 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
     isOldPlayer: false,
   });
 
-
   const passPlayerData = (
     playerName,
     avatar,
@@ -24,22 +22,19 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
     isOldPlayer,
     id
   ) => {
-   
     setPlayerData({
       name: playerName,
       avatar: avatar,
       LastGameScore: LastGameScore,
       isOldPlayer: isOldPlayer,
-      id:id ,
+      id: id,
     });
     setchooseLevel(true);
-   
   };
 
   const toPassLevel = (level) => {
     getPlayerData(playerData);
     toChooseLevel(level);
-
   };
   const handlePlayerType = (playerType) => {
     playerType === "new" ? setNewPlayer(true) : setOldPlayer(true);

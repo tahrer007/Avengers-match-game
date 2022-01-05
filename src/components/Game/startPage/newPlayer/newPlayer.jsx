@@ -2,8 +2,6 @@ import avatarsArr from "../../../../data/avatarsArr";
 import Avatar from "./avatar/avatar";
 import React from "react";
 import "./newPlayer.css";
-import Create from "../../../../api/create";
-import axios from "axios";
 class NewPlayer extends React.Component {
   state = {
     playerName: "",
@@ -19,7 +17,6 @@ class NewPlayer extends React.Component {
   };
 
   addPlayer =  (e, name, avatar) => {
-    const chooseLevel = true ; 
     const isOldPlayer = false ; 
     
     e.preventDefault();
