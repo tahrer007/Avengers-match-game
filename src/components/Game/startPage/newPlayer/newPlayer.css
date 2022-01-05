@@ -26,3 +26,15 @@
     grid-template-rows: repeat(2,auto);
     gap: 0.5em;
 }
+.disableClick{
+    pointer-events:none ;
+    color: blue;
+}
+.clickable{
+    color: red;
+    background-color: chartreuse;
+}
+.clickable:hover{
+    background-color: cornflowerblue;
+    cursor: pointer;
+}

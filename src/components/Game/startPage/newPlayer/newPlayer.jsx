@@ -65,6 +65,7 @@ class NewPlayer extends React.Component {
           ))}
         </div>
         <input
+          className={(!this.state.playerAvatar || !this.state.playerName)?'disableClick':"clickable"}
           type="submit"
           value="done"
           onClick={(e) =>
