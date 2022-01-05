@@ -13,20 +13,3 @@
     flex-direction: column;
    
 }
-.links{
-    text-decoration: none;
-    text-shadow:var(--textShadow);
-    color :  #fff; 
-    background-color: var(--buttonBackGround);
-    border: 2px solid #FADCD9;
-    padding: 0.5em;
-    text-align: center;
-    font-size: 1.5em;
-    box-shadow: 3px 5px #FADCD9;
-}
-.links:hover{
-    cursor:url('/public/images/test.png'), pointer;
-    background-color: #D07874;
-    color: #2E3055;
-    box-shadow: 3px 5px #2E3055;
-}

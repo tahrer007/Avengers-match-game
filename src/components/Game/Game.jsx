@@ -4,6 +4,7 @@ import GameResult from "./gameResult/gameResult";
 import StartPage from "./startPage/startPage";
 import "./game.css";
 import "./card/card.css";
+import "../../app.css"
 import allImages from "../../data/imagesArr";
 import getRandomImages from "./js/gatCards";
 import { useState, useEffect } from "react";
@@ -103,7 +104,7 @@ function Game() {
   };
 
   return (
-    <div className="gameBoardContainer">
+    <div className="gameBoardContainer background">
       {!start && (
         <StartPage
           toChooseLevel={toChooseLevel}

@@ -47,14 +47,14 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
       >
         <h1>this is your first time ? </h1>
         <button
-          className=" playerBtn"
+          className="buttons choosePlayerBtn"
           id="newplayerBtn"
           onClick={() => handlePlayerType("new")}
         >
           yes
         </button>
         <button
-          className=" playerBtn"
+          className="buttons choosePlayerBtn"
           id="oldPlayerBtn"
           onClick={() => handlePlayerType("old")}
         >

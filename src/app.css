@@ -10,7 +10,8 @@
   --bodyFontColor: #fff;
   --textShadow : 2px 2px #5076B5;
   --buttonBackGround :#2E3055 ; 
-  --cursorPointer : url(/public/images/test.png)
+  --cursorPointer : url(/public/images/test.png);
+  --backGroundImage : url(/public/images/mainBackground.jpg) ;
 }
 @font-face {
   font-family: avengers;
@@ -49,6 +50,22 @@
     color: var(--headersFontColor);
     font-size: var(--headersFontSize);
     text-shadow:var( --textShadow);
-  
-
+}
+.buttons{
+  text-decoration: none;
+  text-shadow:var(--textShadow);
+  color :  #fff; 
+  background-color: var(--buttonBackGround);
+  border: 2px solid #FADCD9;
+  padding: 0.5em;
+  text-align: center;
+  font-size: 1.5em;
+  box-shadow: 3px 5px #FADCD9;
+  display: block;
+}
+.buttons:hover{
+  cursor:url('/public/images/test.png'), pointer;
+  background-color: #D07874;
+  color: #2E3055;
+  box-shadow: 3px 5px #2E3055;
 }
