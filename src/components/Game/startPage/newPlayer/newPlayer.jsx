@@ -19,10 +19,11 @@ class NewPlayer extends React.Component {
   };
 
   addPlayer = async (e, name, avatar) => {
+    const chooseLevel = true ; 
     
     e.preventDefault();
     let lastGameScore = 0;
-    this.props.sendPlayerData(name,avatar,lastGameScore)
+    this.props.sendPlayerData(name,avatar,lastGameScore,false,chooseLevel)
 
     try {
       await axios.post(
@@ -49,7 +50,7 @@ class NewPlayer extends React.Component {
             <input
               type="text"
               name="name"
-              value={this.playerName}
+              value={this.state.playerName}
               onChange={this.handleNameChange}
             />
           </label>
