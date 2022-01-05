@@ -35,7 +35,7 @@
   align-items: center;
   font-family: var(--bodyFont);
   background-image: url(/public/images/mainBackground.jpg);
-  letter-spacing:1vmin;
+  letter-spacing:0.2em;
   text-align: center;
   
 }

@@ -17,7 +17,7 @@ class App extends React.Component {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/Thegame" element={<Game />} />
             <Route exact path="/scores" element={<Scores />} />
-            <Route exact path="/about the game" element={<About />} />
+            <Route exact path="/about" element={<About />} />
           </Routes>
         </BrowserRouter>
       </div>
