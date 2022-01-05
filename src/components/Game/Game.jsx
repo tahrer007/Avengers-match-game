@@ -15,7 +15,7 @@ function Game() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [gameScore, setgameScore] = useState(0);
   const [FlipedCardCount, setFlipedCardCount] = useState(0);
-  const [gameLives, setLives] = useState(3);
+  const [gameLives, setLives] = useState(10);
   const [disableClick, setdisableClick] = useState(false);
   const [isWin, setIsWin] = useState(false);
   const [level, setLevel] = useState({});

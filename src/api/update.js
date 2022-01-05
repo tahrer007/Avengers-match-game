@@ -7,6 +7,7 @@ const UpdateData = async (id, lastGameScore) => {
         lastGameScore,
       }
     );
+    
   } catch (error) {
     console.log("the error is : " + error);
   }
