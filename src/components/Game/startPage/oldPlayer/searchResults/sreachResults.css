@@ -1,0 +1,24 @@
+.playerCard{
+    width: 100% ; 
+    display: flex ;
+    justify-content: flex-start;
+    
+}
+.avatarBox{
+    max-width: 20%;
+
+}
+.playerCard img{
+    max-width: 100%;
+    border-radius: 50%;
+   
+}
+
+.playerCard:hover{
+    cursor: pointer;
+    background-color: darkgrey;
+
+}
+ul{
+    list-style: none;
+}

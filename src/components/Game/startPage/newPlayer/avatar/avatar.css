@@ -8,7 +8,7 @@
     border-radius: 50%;
     top: 0;
     position: relative;
-  transition: top ease 0.5s;
+    transition: top ease 0.5s;
     
 }
 .avatar img:hover{

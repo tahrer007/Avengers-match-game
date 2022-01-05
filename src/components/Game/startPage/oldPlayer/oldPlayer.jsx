@@ -1,14 +1,20 @@
 import React from "react";
 import "./oldPlayer.css";
 import axios from "axios";
+import SearchResults from "./searchResults/searchResults";
 class OldPlayer extends React.Component {
   state = {
     lastGameScore: 10,
     isPlayerFound: null,
     searchInput: "",
     typingTimeout: 0,
-    playersArr : []
+    playersArr: [],
+    searchDone: false,
   };
+  handleChoice =(player)=>{
+    console.log(player) ;
+
+  }
   handleTypingChange = (event) => {
     this.setState({ searchInput: event.target.value });
     if (this.state.typingTimeout) {
@@ -30,30 +36,28 @@ class OldPlayer extends React.Component {
         `https://61d3f514b4c10c001712bb68.mockapi.io/playersData?name=${inputValue}`
       );
       console.log(searchResults.data);
-      if (!searchResults.data.length) this.setState({ isPlayerFound: false });
-      else{
-          this.setState({
-            isPlayerFound: true , 
-            playersArr : searchResults.data , 
-
-          })
+      if (!searchResults.data.length)
+        this.setState({ isPlayerFound: false, searchDone: true });
+      else {
+        this.setState({
+          isPlayerFound: true,
+          playersArr: searchResults.data,
+          searchDone: true,
+        });
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  componentDidUpdate(){
-    console.log(this.state.isPlayerFound,this.state.playersArr)
+  componentDidUpdate() {
+    console.log(this.state.isPlayerFound, this.state.playersArr);
   }
 
   render() {
     return (
       <div className="oldPlayer">
-        <div
-          className="playerInput"
-          style={{ display: this.state.isPlayerFound ? "none" : "block" }}
-        >
+        <div className="playerInput">
           <label>
             type your name: <br />
             <input
@@ -64,23 +68,27 @@ class OldPlayer extends React.Component {
               placeholder="type your name"
             />
           </label>
-
-          <input type="submit" value="done" />
         </div>
-        <div className={(!this.state.isPlayerFound)?"playerNotFound":""}> 
-        { "player not found type again !!"} </div>
         <div
-          className="playerData"
-          style={{ display: this.state.isPlayerFound ? "block" : "none" }}
+          className="playerNotFound"
+          style={{
+            display:
+              !this.state.isPlayerFound && this.state.searchDone
+                ? "block"
+                : "none",
+          }}
         >
-          <h1>Welcome back {this.state.playerName}</h1>
-          <img
-            className=""
-            src={process.env.PUBLIC_URL + this.state.playerAvatar}
-            alt="avatar"
-          />
-          <h3> you last score is : {this.state.lastGameScore}</h3>
+          player not found type again !!
         </div>
+        {
+          <div className="playersList">
+            <ul>
+              {this.state.playersArr.map((player) => (
+                <SearchResults key={player.id} player={player} handleChoice={this.handleChoice} />
+              ))}
+            </ul>
+          </div>
+        }
       </div>
     );
   }
