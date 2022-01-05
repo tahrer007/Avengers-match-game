@@ -16,15 +16,16 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
     isOldPlayer: false,
   });
 
-  /*useEffect(() => {
+  useEffect(() => {
     console.log(playerData);
-  }, [playerData]);*/
+  }, [playerData]);
 
   const passPlayerData = (
     playerName,
     avatar,
     LastGameScore,
     isOldPlayer,
+    id
   ) => {
    
     setPlayerData({
@@ -32,6 +33,7 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
       avatar: avatar,
       LastGameScore: LastGameScore,
       isOldPlayer: isOldPlayer,
+      id:id ,
     });
     setchooseLevel(true);
    

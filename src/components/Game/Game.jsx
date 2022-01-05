@@ -9,24 +9,6 @@ import allImages from "../../data/imagesArr";
 import getRandomImages from "./js/gatCards";
 import { useState, useEffect } from "react";
 
-/*const cardsINrow = (level) => {
-  switch (level) {
-    case "easy": {
-      return easy / 3;
-    }
-    case "intermediate": {
-      return intermediate / 4;
-    }
-
-    case "hard": {
-      return hard / 6;
-    }
-    default: {
-      return hard / 6;
-    }
-  }
-};*/
-
 function Game() {
   const [cards, setcards] = useState([]);
   const [start, setStart] = useState(false);
@@ -39,7 +21,13 @@ function Game() {
   const [isWin, setIsWin] = useState(false);
   const [level, setLevel] = useState({});
   const [playerData, setPlayerData] = useState({});
+  const [passHiestResult, setpassHiestResult] =useState(false);
 
+  //check if player pass his last score
+  useEffect(() => {
+    if (playerData.isOldPlayer && gameScore > playerData.lastScore)
+      setpassHiestResult(true);
+  }, [gameScore]);
   //get and handle player data
   const getPlayerData = (player) => {
     setPlayerData(player);
@@ -152,6 +140,12 @@ function Game() {
         game scores : {gameScore} <br />
         game lives : {gameLives} <br />
         {FlipedCardCount}
+        <div
+          className="PassLastResult"
+          style={{ display: passHiestResult ? "block" : "none" }}
+        >
+          you get new hiegh score !!
+        </div>
         <img
           className=""
           src={process.env.PUBLIC_URL + playerData.avatar}

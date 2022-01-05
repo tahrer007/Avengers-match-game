@@ -26,7 +26,7 @@ class NewPlayer extends React.Component {
     let lastGameScore = 0;
     this.props.sendPlayerData(name,avatar,lastGameScore,isOldPlayer)
 
-    //Create(name, avatar,lastGameScore)
+    
 
     //
   };
