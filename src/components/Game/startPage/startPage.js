@@ -3,23 +3,45 @@ import NewPlayer from "./newPlayer/newPlayer";
 import { useEffect, useState } from "react";
 import OldPlayer from "./oldPlayer/oldPlayer";
 import GameLevels from "./gameLevel/gameLevels";
+import PlayerData from "./playerData/playerData";
 
-const StartPage = ({toChooseLevel,getPlayerData}) => {
+const StartPage = ({ toChooseLevel, getPlayerData }) => {
   const [newPlayer, setNewPlayer] = useState(false);
   const [oldplayer, setOldPlayer] = useState(false);
   const [chooseLevel, setchooseLevel] = useState(false);
+  const [playerData, setPlayerData] = useState({
+    name: "",
+    avatar: "",
+    LastGameScore: 0,
+    isOldPlayer: false,
+  });
 
-  useEffect(() => {}, [newPlayer, oldplayer]);
+  /*useEffect(() => {
+    console.log(playerData);
+  }, [playerData]);*/
 
-  const passPlayerData = (playerName, avatar, LastGameScore, isOldPlayer,chooseLevel) => {
-    setchooseLevel(true) ;
-
-    getPlayerData(playerName, avatar, LastGameScore, isOldPlayer);
+  const passPlayerData = (
+    playerName,
+    avatar,
+    LastGameScore,
+    isOldPlayer,
+  ) => {
+   
+    setPlayerData({
+      name: playerName,
+      avatar: avatar,
+      LastGameScore: LastGameScore,
+      isOldPlayer: isOldPlayer,
+    });
+    setchooseLevel(true);
+   
   };
 
-  const toPassLevel =(level)=>{
-    toChooseLevel(level)
-  }
+  const toPassLevel = (level) => {
+    getPlayerData(playerData);
+    toChooseLevel(level);
+
+  };
   const handlePlayerType = (playerType) => {
     playerType === "new" ? setNewPlayer(true) : setOldPlayer(true);
   };
@@ -45,9 +67,13 @@ const StartPage = ({toChooseLevel,getPlayerData}) => {
           no
         </button>
       </div>
-      {newPlayer&&!chooseLevel && <NewPlayer sendPlayerData={passPlayerData} />}
-      {oldplayer&&!chooseLevel && <OldPlayer sendPlayerData={passPlayerData} />}
-      
+      {newPlayer && !chooseLevel && (
+        <NewPlayer sendPlayerData={passPlayerData} />
+      )}
+      {oldplayer && !chooseLevel && (
+        <OldPlayer sendPlayerData={passPlayerData} />
+      )}
+
       {chooseLevel && <GameLevels toChooseLevel={toPassLevel} />}
     </div>
   );

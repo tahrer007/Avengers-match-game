@@ -28,7 +28,6 @@ import { useState, useEffect } from "react";
 };*/
 
 function Game() {
-  
   const [cards, setcards] = useState([]);
   const [start, setStart] = useState(false);
   const [choiceOne, setChoiceOne] = useState(null);
@@ -42,14 +41,8 @@ function Game() {
   const [playerData, setPlayerData] = useState({});
 
   //get and handle player data
-  const getPlayerData = (name, avatar, lastScore, isOldPlayer) => {
-    //console.log(name, avatar, lastScore, isOldPlayer);
-    let obj = {};
-    obj.name = name;
-    obj.avatar = avatar;
-    obj.lastScore = lastScore;
-    obj.isOldPlayer = isOldPlayer;
-    setPlayerData(obj);
+  const getPlayerData = (player) => {
+    setPlayerData(player);
   };
   //suffles cards
   const suffleCards = () => {
@@ -160,14 +153,14 @@ function Game() {
         game lives : {gameLives} <br />
         {FlipedCardCount}
         <img
-            className=""
-            src={process.env.PUBLIC_URL + playerData.avatar}
-            alt="avatar"
-          />
+          className=""
+          src={process.env.PUBLIC_URL + playerData.avatar}
+          alt="avatar"
+        />
       </div>
 
       {(isWin || !gameLives) && (
-        <GameResult win={isWin} gameScore={gameScore} />
+        <GameResult win={isWin} gameScore={gameScore} player={playerData} />
       )}
     </div>
   );

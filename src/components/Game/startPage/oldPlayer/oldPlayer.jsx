@@ -23,19 +23,17 @@ class OldPlayer extends React.Component {
     this.setState({
       typingTimeout: setTimeout(() => {
         this.searchPlayerData(this.state.searchInput);
-      }, 1000),
+      }, 500),
     });
   };
 
   searchPlayerData = async (inputValue) => {
-    //const chooseLevel = true;
-    console.log(inputValue);
+
     let searchResults;
     try {
       searchResults = await axios.get(
         `https://61d3f514b4c10c001712bb68.mockapi.io/playersData?name=${inputValue}`
       );
-      console.log(searchResults.data);
       if (!searchResults.data.length)
         this.setState({ isPlayerFound: false, searchDone: true });
       else {
@@ -51,7 +49,7 @@ class OldPlayer extends React.Component {
   };
 
   componentDidUpdate() {
-    console.log(this.state.isPlayerFound, this.state.playersArr);
+    //console.log(this.state.isPlayerFound, this.state.playersArr);
   }
 
   render() {
