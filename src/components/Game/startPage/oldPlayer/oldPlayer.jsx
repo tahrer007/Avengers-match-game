@@ -12,8 +12,8 @@ class OldPlayer extends React.Component {
     searchDone: false,
   };
   handleChoice =(player)=>{
-    console.log(player) ;
-
+    const isOldPlayer = true ; 
+    this.props.sendPlayerData(player.name, player.avatar, player.LastGameScore, isOldPlayer);
   }
   handleTypingChange = (event) => {
     this.setState({ searchInput: event.target.value });

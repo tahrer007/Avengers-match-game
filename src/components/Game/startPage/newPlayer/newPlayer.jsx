@@ -18,25 +18,15 @@ class NewPlayer extends React.Component {
     this.setState({ playerName: event.target.value });
   };
 
-  addPlayer = async (e, name, avatar) => {
+  addPlayer =  (e, name, avatar) => {
     const chooseLevel = true ; 
+    const isOldPlayer = false ; 
     
     e.preventDefault();
     let lastGameScore = 0;
-    this.props.sendPlayerData(name,avatar,lastGameScore,false,chooseLevel)
+    this.props.sendPlayerData(name,avatar,lastGameScore,isOldPlayer)
 
-    try {
-      await axios.post(
-        `https://61d3f514b4c10c001712bb68.mockapi.io/playersData`,
-        {
-          name,
-          avatar,
-          lastGameScore,
-        }
-      );
-    } catch (error) {
-      console.log("the error is : " + error);
-    }
+    //Create(name, avatar,lastGameScore)
 
     //
   };

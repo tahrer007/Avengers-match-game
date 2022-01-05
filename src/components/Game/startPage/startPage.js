@@ -47,6 +47,7 @@ const StartPage = ({toChooseLevel,getPlayerData}) => {
       </div>
       {newPlayer&&!chooseLevel && <NewPlayer sendPlayerData={passPlayerData} />}
       {oldplayer&&!chooseLevel && <OldPlayer sendPlayerData={passPlayerData} />}
+      
       {chooseLevel && <GameLevels toChooseLevel={toPassLevel} />}
     </div>
   );
