@@ -33,7 +33,7 @@ function Game() {
   };
   //suffles cards
   const suffleCards = () => {
-    let cardsNumbers = 6;
+    let cardsNumbers = (level.cardsNum/2) ;
     let takenImages = getRandomImages(allImages, cardsNumbers);
     const shuffledCards = [...takenImages, ...takenImages]
       .sort(() => Math.random() - 0.5)
@@ -43,13 +43,12 @@ function Game() {
 
   //handle card choice
   const handleChoice = (card) => {
-    //console.log(card)
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
   //start the game
   useEffect(() => {
     suffleCards();
-  }, []);
+  }, [level]);
   
   //check if win the game
   useEffect(() => {
@@ -95,10 +94,16 @@ function Game() {
     }, 1000);
   };
   //get which level from the child (call back function)
+  useEffect(() => {
+   
+    
+  }, [])
+
   const toChooseLevel = (level) => {
     setStart(true);
     setLevel(level);
   };
+  
 
   return (
     <div className="gameBoardContainer">
@@ -112,8 +117,8 @@ function Game() {
       <div
         className="cardsBoard"
         style={{
-          gridTemplateColumns: `repeat(4, 1fr)`,
-          gridTemplateRows: `repeat(6, 1fr)`,
+          gridTemplateColumns: `repeat(${level.cols}, 1fr)`,
+          gridTemplateRows: `repeat(${level.rows}, 1fr)`,
         }}
       >
         {cards.map((card) => (

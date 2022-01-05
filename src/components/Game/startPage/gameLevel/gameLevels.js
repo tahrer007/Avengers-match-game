@@ -1,9 +1,9 @@
 import "./gameLevels.css";
 const levelsArr = [
-  { name: "Easy", text: "12 cards", cardsNum: 12 },
-  { name: "Intermediate", text: "24 cards", cardsNum: 24 },
-  { name: "Hard", text: "36 cards", cardsNum: 36 },
-  { name: "Ninja", text: "as much as you can in 2 minutes", cardsNum: 48 },
+  { name: "Easy", text: "12 cards", cardsNum: 12 ,rows :4 ,cols : 3 },
+  { name: "Intermediate", text: "24 cards", cardsNum: 24 ,rows :4 ,cols : 6},
+  { name: "Hard", text: "36 cards", cardsNum: 36 ,rows :6 ,cols : 6 },
+  { name: "Ninja", text: "as much as you can in 2 minutes", cardsNum: 48,rows :6 ,cols : 8 },
 ];
 function GameLevels({toChooseLevel}) {
 

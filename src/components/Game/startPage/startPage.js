@@ -16,9 +16,6 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
     isOldPlayer: false,
   });
 
-  useEffect(() => {
-    console.log(playerData);
-  }, [playerData]);
 
   const passPlayerData = (
     playerName,
