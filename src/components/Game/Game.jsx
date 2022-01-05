@@ -20,48 +20,15 @@ function Game() {
   const [isWin, setIsWin] = useState(false);
   const [level, setLevel] = useState({});
   const [playerData, setPlayerData] = useState({});
-  const [passHiestResult, setpassHiestResult] =useState(false);
-//check if player pass his last score
+  const [passHiestResult, setpassHiestResult] = useState(false);
 
-  //update  if player pass his last score
-  useEffect(() => {
-    if (playerData.isOldPlayer && gameScore > playerData.lastScore)
-      setpassHiestResult(true);
-  }, [gameScore]);
-
-  //get and handle player data
-  const getPlayerData = (player) => {
-    setPlayerData(player);
-  };
-  //suffles cards
-  const suffleCards = () => {
-    let cardsNumbers = (level.cardsNum/2) ;
-    let takenImages = getRandomImages(allImages, cardsNumbers);
-    const shuffledCards = [...takenImages, ...takenImages]
-      .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card, id: Math.random() }));
-    setcards(shuffledCards);
-  };
-
-  //handle card choice
-  const handleChoice = (card) => {
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
-  };
   //start the game
   useEffect(() => {
     suffleCards();
   }, [level]);
+ 
   
-  //check if win the game
-  useEffect(() => {
-    if (FlipedCardCount) {
-      console.log(FlipedCardCount, cards.length);
-      if (FlipedCardCount === cards.length / 2) {
-        console.log("you won the game ");
-        setIsWin(true);
-      }
-    }
-  }, [FlipedCardCount]);
+
   //check turn results
   useEffect(() => {
     if (choiceOne && choiceTwo) {
@@ -86,6 +53,40 @@ function Game() {
       }
     }
   }, [choiceOne, choiceTwo]);
+   //update  if player pass his last score
+  useEffect(() => {
+    if (playerData.isOldPlayer && gameScore > playerData.lastScore)
+      setpassHiestResult(true);
+  }, [gameScore]);
+  //check if win the game
+  useEffect(() => {
+    if (FlipedCardCount) {
+      console.log(FlipedCardCount, cards.length);
+      if (FlipedCardCount === cards.length / 2) {
+        console.log("you won the game ");
+        setIsWin(true);
+      }
+    }
+  }, [FlipedCardCount]);
+
+  //get and handle player data
+  const getPlayerData = (player) => {
+    setPlayerData(player);
+  };
+  //suffles cards
+  const suffleCards = () => {
+    let cardsNumbers = level.cardsNum / 2;
+    let takenImages = getRandomImages(allImages, cardsNumbers);
+    const shuffledCards = [...takenImages, ...takenImages]
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({ ...card, id: Math.random() }));
+    setcards(shuffledCards);
+  };
+
+  //handle card choice
+  const handleChoice = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
 
   //reset choices
   const resetChioces = () => {
@@ -96,16 +97,12 @@ function Game() {
     }, 1000);
   };
   //get which level from the child (call back function)
-  useEffect(() => {
-   
-    
-  }, [])
+  useEffect(() => {}, []);
 
   const toChooseLevel = (level) => {
     setStart(true);
     setLevel(level);
   };
-  
 
   return (
     <div className="gameBoardContainer">
