@@ -4,17 +4,22 @@ import { useEffect, useState } from "react";
 import OldPlayer from "./oldPlayer/oldPlayer";
 import GameLevels from "./gameLevel/gameLevels";
 
-const StartPage = () => {
+const StartPage = ({toChooseLevel,getPlayerData}) => {
   const [newPlayer, setNewPlayer] = useState(false);
   const [oldplayer, setOldPlayer] = useState(false);
   const [chooseLevel, setchooseLevel] = useState(false);
 
   useEffect(() => {}, [newPlayer, oldplayer]);
 
-  const passPlayerData = (playerName, avatar, LastGameScore, isOldPlayer) => {
+  const passPlayerData = (playerName, avatar, LastGameScore, isOldPlayer,chooseLevel) => {
     setchooseLevel(true) ;
-    console.log(playerName, avatar, LastGameScore, isOldPlayer);
+
+    getPlayerData(playerName, avatar, LastGameScore, isOldPlayer);
   };
+
+  const toPassLevel =(level)=>{
+    toChooseLevel(level)
+  }
   const handlePlayerType = (playerType) => {
     playerType === "new" ? setNewPlayer(true) : setOldPlayer(true);
   };
@@ -42,7 +47,7 @@ const StartPage = () => {
       </div>
       {newPlayer&&!chooseLevel && <NewPlayer sendPlayerData={passPlayerData} />}
       {oldplayer&&!chooseLevel && <OldPlayer sendPlayerData={passPlayerData} />}
-      {chooseLevel && <GameLevels sendPlayerData={passPlayerData} />}
+      {chooseLevel && <GameLevels toChooseLevel={toPassLevel} />}
     </div>
   );
 };

@@ -9,10 +9,6 @@ import allImages from "../../data/imagesArr";
 import getRandomImages from "./js/gatCards";
 import { useState, useEffect } from "react";
 
-/*const easy = 12;
-const intermediate = 24;
-const hard = 48;*/
-
 /*const cardsINrow = (level) => {
   switch (level) {
     case "easy": {
@@ -31,18 +27,30 @@ const hard = 48;*/
   }
 };*/
 
-
 function Game() {
+  
   const [cards, setcards] = useState([]);
   const [start, setStart] = useState(false);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
   const [gameScore, setgameScore] = useState(0);
   const [FlipedCardCount, setFlipedCardCount] = useState(0);
   const [gameLives, setLives] = useState(3);
-  const [choiceOne, setChoiceOne] = useState(null);
-  const [choiceTwo, setChoiceTwo] = useState(null);
   const [disableClick, setdisableClick] = useState(false);
   const [isWin, setIsWin] = useState(false);
+  const [level, setLevel] = useState({});
+  const [playerData, setPlayerData] = useState({});
 
+  //get and handle player data
+  const getPlayerData = (name, avatar, lastScore, isOldPlayer) => {
+    //console.log(name, avatar, lastScore, isOldPlayer);
+    let obj = {};
+    obj.name = name;
+    obj.avatar = avatar;
+    obj.lastScore = lastScore;
+    obj.isOldPlayer = isOldPlayer;
+    setPlayerData(obj);
+  };
   //suffles cards
   const suffleCards = () => {
     let cardsNumbers = 6;
@@ -53,7 +61,7 @@ function Game() {
     setcards(shuffledCards);
   };
 
-  //handle choice
+  //handle card choice
   const handleChoice = (card) => {
     //console.log(card)
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
@@ -69,7 +77,7 @@ function Game() {
     }
   }, [isWin, gameLives]);
 
-  //win the game
+  //check if win the game
   useEffect(() => {
     if (FlipedCardCount) {
       console.log(FlipedCardCount, cards.length);
@@ -79,7 +87,7 @@ function Game() {
       }
     }
   }, [FlipedCardCount]);
-  //process choice
+  //check turn results
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setdisableClick(true);
@@ -112,11 +120,21 @@ function Game() {
       setChoiceTwo(null);
     }, 1000);
   };
+  //get which level from the child (call back function)
+  const toChooseLevel = (level) => {
+    setStart(true);
+    setLevel(level);
+  };
 
   return (
     <div className="gameBoardContainer">
-      {  !start && <StartPage />}
-      
+      {!start && (
+        <StartPage
+          toChooseLevel={toChooseLevel}
+          getPlayerData={getPlayerData}
+        />
+      )}
+
       <div
         className="cardsBoard"
         style={{
@@ -136,9 +154,16 @@ function Game() {
       </div>
 
       <div className="gameData">
+        player name : {playerData.name}
+        last scores : {playerData.lastScore}
         game scores : {gameScore} <br />
         game lives : {gameLives} <br />
         {FlipedCardCount}
+        <img
+            className=""
+            src={process.env.PUBLIC_URL + playerData.avatar}
+            alt="avatar"
+          />
       </div>
 
       {(isWin || !gameLives) && (
