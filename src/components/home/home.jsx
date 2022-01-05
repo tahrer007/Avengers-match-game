@@ -1,5 +1,7 @@
 import React from "react";
 import { Link  } from "react-router-dom";
+import "./home.css"
+import "../../app.css"
 
 
 
@@ -11,10 +13,17 @@ class Home extends React.Component {
 
    
     return (
-      <div >
-        <Link to="/Thegame" >start the gameBoard</Link> <br/>
-        <Link to="/scores">get scores </Link>
+      <div className="home background">
+        <h1 className="header"> AVENGERS MATCH</h1>
+        <div className="linksBox">
+        <Link to="/Thegame" className="links">start </Link> <br/>
+        <Link to="/scores" className="links">get top scores </Link><br/>
+        <Link to="/about" className="links"> about the game  </Link>
       </div>
+
+
+      </div>
+     
     );
   }
 }

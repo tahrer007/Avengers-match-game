@@ -26,8 +26,6 @@ function Game() {
   useEffect(() => {
     suffleCards();
   }, [level]);
- 
-  
 
   //check turn results
   useEffect(() => {
@@ -53,7 +51,7 @@ function Game() {
       }
     }
   }, [choiceOne, choiceTwo]);
-   //update  if player pass his last score
+  //update  if player pass his last score
   useEffect(() => {
     if (playerData.isOldPlayer && gameScore > playerData.lastScore)
       setpassHiestResult(true);

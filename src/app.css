@@ -1,15 +1,54 @@
-*{
-    margin: 0;
-    padding: 0;
-    
+* {
+  margin: 0;
+  padding: 0;
 }
-.mainContainer{
-    width: 100vw;
-    height: 100vh;
-    background-color: lightpink;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+:root {
+  --bodyFont: avengers;
+  --headerFont: avengersBold;
+  --headersFontColor: #fff;
+  --headersFontSize: 3em;
+  --bodyFontColor: #fff;
+  --textShadow : 2px 2px #5076B5;
+  --buttonBackGround :#2E3055 ; 
+  --cursorPointer : url(/public/images/test.png)
+}
+@font-face {
+  font-family: avengers;
+  src: url(./assets/fonts/avengeance/AVENGEANCE\ HEROIC\ AVENGER.ttf);
+}
+@font-face {
+  font-family: avengersBold;
+  src: url(./assets/fonts/avengeance/AVENGEANCE\ HEROIC\ AVENGER\ BD.ttf);
+}
+@font-face {
+  font-family: avengersBoldItalic;
+  src: url(./assets/fonts/avengeance/AVENGEANCE\ HEROIC\ AVENGER\ BI.ttf);
+}
+
+.mainContainer {
+  width: 100vw;
+  height: 100vh;
+  background-color: lightpink;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: var(--bodyFont);
+  background-image: url(/public/images/mainBackground.jpg);
+  letter-spacing:1vmin;
+  text-align: center;
+  
+}
+.background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mainContainer h1{
+    color: var(--headersFontColor);
+    font-size: var(--headersFontSize);
+    text-shadow:var( --textShadow);
+  
+
 }
