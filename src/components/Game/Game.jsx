@@ -21,12 +21,14 @@ function Game() {
   const [level, setLevel] = useState({});
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] =useState(false);
+//check if player pass his last score
 
-  //check if player pass his last score
+  //update  if player pass his last score
   useEffect(() => {
     if (playerData.isOldPlayer && gameScore > playerData.lastScore)
       setpassHiestResult(true);
   }, [gameScore]);
+
   //get and handle player data
   const getPlayerData = (player) => {
     setPlayerData(player);
