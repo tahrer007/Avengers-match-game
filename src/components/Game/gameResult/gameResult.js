@@ -13,7 +13,7 @@ export default function GameResult({ win, gameScore, player }) {
     audio.play();
 }*/
   useEffect(() => {
-    playAudio() ; 
+   // playAudio() ; 
     if (player.isOldPlayer) {
       UpdateData(player.id, gameScore);
     } else {
