@@ -7,7 +7,7 @@ import "./card/card.css";
 import "../../app.css";
 import allImages from "../../data/imagesArr";
 import getRandomImages from "../../js/gatCards";
-import { useState, useEffect } from "react";
+import { useState, useEffect ,useReducer } from "react";
 
 function Game() {
   const [cards, setcards] = useState([]);
@@ -22,12 +22,37 @@ function Game() {
   const [level, setLevel] = useState("");
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] = useState(false);
-  const [lastGameResult,setLastResult]=useState(0)
+  const [lastGameResult,setLastResult]=useState(0) ;
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const reducer = (level, action) => {
+
+   /* if(action.type == 'chomp') {
+      return people.map(person => {
+        if(person.name == action.payload) {
+          person.alive = false;
+        }
+        return person;
+      })
+    }
+    if(action.type == 'revive') {
+      return people.map(person => {
+        if(person.name == action.payload) {
+          person.alive = true;
+        }
+        return person;
+      })
+    }*/
+  }
+
+
+  
 
   //start the game
   useEffect(() => {
-    suffleCards();
     setLastResult(playerData.lastGameScore);
+    suffleCards();
+    
   }, [level]);
 
   //check turn results
