@@ -23,7 +23,7 @@ function Game() {
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] = useState(false);
   const [lastGameResult,setLastResult]=useState(0) ;
-  const [state, dispatch] = useReducer(reducer, initialState);
+ 
 
   const reducer = (level, action) => {
 
