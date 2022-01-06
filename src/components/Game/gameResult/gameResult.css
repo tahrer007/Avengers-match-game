@@ -1,8 +1,44 @@
-.gameResult{
+
+.gameResult {
+    background-color: aqua;
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: darkmagenta;
+    z-index: 1;
+    top: 0;
     left: 0;
-    top:0 ; 
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(/public/images/Trophy_.gif);
+    background-position: center;
+    color: azure;
+    letter-spacing: 0.3em;
+    text-align: center;
+    display: hidden;
+    
+    background-size: contain;
+   
+  }
+  
+  .newGameBtn {
+    background-color: azure;
+    font-size: 2em;
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 0.1em;
+    box-shadow: rgb(45 35 66 / 40%) 0 2px 4px, rgb(45 35 66 / 30%) 0 7px 13px -3px,
+      #d6d6e7 0 -3px 0 inset;
+    border-radius: 4px;
+  
+  }
+Link{
+      text-decoration: none;
+  }
+  .newGameBtn:hover {
+    background-color: lemonchiffon;
+    box-shadow: lemonchiffon;
+  }
+  

@@ -19,14 +19,14 @@ function Game() {
   const [gameLives, setLives] = useState(10);
   const [disableClick, setdisableClick] = useState(false);
   const [isWin, setIsWin] = useState(false);
-  const [level, setLevel] = useState({});
+  const [level, setLevel] = useState("");
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] = useState(false);
 
   //start the game
   useEffect(() => {
     suffleCards();
-    console.log(playerData.lastScore)
+    console.log(playerData.lastScore);
   }, [level]);
 
   //check turn results
@@ -131,7 +131,7 @@ function Game() {
         ))}
       </div>
 
-      <div className="gameData">
+      <div className="gameData" style={{ display: level ? "block" : "none" }}>
         <h1>{playerData.name} </h1>
         <div className="avatarImageBox">
           <img
@@ -142,7 +142,7 @@ function Game() {
         </div>
         <div className="gameScore"> {gameScore}</div>
         <div className="gameLives">
-        game lives : {gameLives} <br />
+          game lives : {gameLives} <br />
         </div>
         <div
           className="lastResults"
@@ -161,7 +161,6 @@ function Game() {
       {(isWin || !gameLives) && (
         <GameResult win={isWin} gameScore={gameScore} player={playerData} />
       )}
-
     </div>
   );
 }
