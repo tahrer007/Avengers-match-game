@@ -6,7 +6,7 @@ const highestScores = 5;
 
 const processScores = (scoresArr) => {
   if (scoresArr.length < highestScores) return scoresArr;
-  else scoresArr.slice(0, 5);
+  else return scoresArr.slice(0, 5);
 };
 
 class Scores extends React.Component {
