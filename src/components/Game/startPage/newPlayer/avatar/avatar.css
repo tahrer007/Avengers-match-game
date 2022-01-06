@@ -6,7 +6,7 @@
 }
 .avatar img{
     max-width: 90%;
-    max-height: 90%;
+    max-height:80%;
     object-fit:cover ; 
     border-radius: 50%;
     top: 0;

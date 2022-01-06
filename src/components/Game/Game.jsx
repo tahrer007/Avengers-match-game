@@ -4,7 +4,7 @@ import GameResult from "./gameResult/gameResult";
 import StartPage from "./startPage/startPage";
 import "./game.css";
 import "./card/card.css";
-import "../../app.css"
+import "../../app.css";
 import allImages from "../../data/imagesArr";
 import getRandomImages from "./js/gatCards";
 import { useState, useEffect } from "react";
@@ -26,6 +26,7 @@ function Game() {
   //start the game
   useEffect(() => {
     suffleCards();
+    console.log(playerData.lastScore)
   }, [level]);
 
   //check turn results
@@ -131,27 +132,36 @@ function Game() {
       </div>
 
       <div className="gameData">
-        player name : {playerData.name}
-        last scores : {playerData.lastScore}
-        game scores : {gameScore} <br />
+        <h1>{playerData.name} </h1>
+        <div className="avatarImageBox">
+          <img
+            className="gameDataImage"
+            src={process.env.PUBLIC_URL + playerData.avatar}
+            alt="avatar"
+          />
+        </div>
+        <div className="gameScore"> {gameScore}</div>
+        <div className="gameLives">
         game lives : {gameLives} <br />
-        {FlipedCardCount}
+        </div>
+        <div
+          className="lastResults"
+          style={{ display: playerData.isOldPlayer ? "block" : "none" }}
+        >
+          <h3> your last score : {playerData.lastScore} </h3>
+        </div>
         <div
           className="PassLastResult"
           style={{ display: passHiestResult ? "block" : "none" }}
         >
-          you get new hiegh score !!
+          <h3> you get new hiegh score !! </h3>
         </div>
-        <img
-          className=""
-          src={process.env.PUBLIC_URL + playerData.avatar}
-          alt="avatar"
-        />
       </div>
 
       {(isWin || !gameLives) && (
         <GameResult win={isWin} gameScore={gameScore} player={playerData} />
       )}
+
     </div>
   );
 }
