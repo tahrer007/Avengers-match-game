@@ -6,7 +6,7 @@ import "./game.css";
 import "./card/card.css";
 import "../../app.css";
 import allImages from "../../data/imagesArr";
-import getRandomImages from "./js/gatCards";
+import getRandomImages from "../../js/gatCards";
 import { useState, useEffect } from "react";
 
 function Game() {
@@ -16,7 +16,7 @@ function Game() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [gameScore, setgameScore] = useState(0);
   const [FlipedCardCount, setFlipedCardCount] = useState(0);
-  const [gameLives, setLives] = useState(10);
+  const [gameLives, setLives] = useState(4);
   const [disableClick, setdisableClick] = useState(false);
   const [isWin, setIsWin] = useState(false);
   const [level, setLevel] = useState("");
