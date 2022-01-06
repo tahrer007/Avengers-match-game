@@ -2,6 +2,7 @@ import avatarsArr from "../../../../data/avatarsArr";
 import Avatar from "./avatar/avatar";
 import React from "react";
 import "./newPlayer.css";
+import "../../../../app.css"
 class NewPlayer extends React.Component {
   state = {
     playerName: "",
@@ -31,16 +32,16 @@ class NewPlayer extends React.Component {
   render() {
     return (
       <div className="newPlayer">
-        <div className="playerInput">
-          <label>
-            Player name: <br />
+        <div className="playerInputBox">
+        
+            <h1> please type your name and pick avatar </h1>
             <input
               type="text"
               name="name"
               value={this.state.playerName}
               onChange={this.handleNameChange}
             />
-          </label>
+          
         </div>
         <div className="avatarsBox">
           {avatarsArr.map((avatar, index) => (
@@ -52,7 +53,7 @@ class NewPlayer extends React.Component {
           ))}
         </div>
         <input
-          className={(!this.state.playerAvatar || !this.state.playerName)?'disableClick':"clickable"}
+          className={(!this.state.playerAvatar || !this.state.playerName)?' buttons disableClick ':" buttons clickable"}
           type="submit"
           value="done"
           onClick={(e) =>

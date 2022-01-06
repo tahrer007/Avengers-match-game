@@ -9,10 +9,7 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
   const [oldplayer, setOldPlayer] = useState(false);
   const [chooseLevel, setchooseLevel] = useState(false);
   const [playerData, setPlayerData] = useState({
-    name: "",
-    avatar: "",
-    LastGameScore: 0,
-    isOldPlayer: false,
+   
   });
 
   const passPlayerData = (

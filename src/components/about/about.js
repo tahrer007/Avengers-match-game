@@ -29,7 +29,7 @@ class About extends React.Component {
 
             </div>
        
-        <Link to="/Thegame" className="links aboutLink"> Ready to play </Link> <br/>
+        <Link to="/Thegame" className="buttons aboutLink"> Ready to play </Link> <br/>
         
       </div>
      

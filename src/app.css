@@ -32,7 +32,7 @@
   background-color: lightpink;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content:center;
   align-items: center;
   font-family: var(--bodyFont);
   background-image: url(/public/images/mainBackground.jpg);

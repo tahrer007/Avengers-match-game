@@ -16,9 +16,9 @@ class Home extends React.Component {
       <div className="home background">
         <h1 className="header"> Avenger’s  MATCH</h1>
         <div className="linksBox">
-        <Link to="/Thegame" className="links">start </Link> <br/>
-        <Link to="/scores" className="links">get top scores </Link><br/>
-        <Link to="/about" className="links"> about the game  </Link>
+        <Link to="/Thegame" className="buttons">start </Link> <br/>
+        <Link to="/scores" className="buttons">get top scores </Link><br/>
+        <Link to="/about" className="buttons"> about the game  </Link>
       </div>
 
 

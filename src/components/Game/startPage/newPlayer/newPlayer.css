@@ -1,40 +1,77 @@
 .newPlayer{
     width: 70%;
-    height: fit-content;
-    background-color: tomato;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    padding:0.5em;
     box-sizing: border-box;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    padding: 0.1vw;
 }
-.newPlayer label{
-  font-size:2em;
+.playerInputBox{
+    width: 100%;
+    height: 20%;
+}
+.newPlayer .choicePlayerType h1{
+    font-size: var(--headersFontSize);
+    
+}
+.avatarsBox{
+    width:90%;
+    height:70%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+   
+    box-sizing: border-box;
+  
+    
 }
 .newPlayer input[type=text]{
-    width : 100%;
-    height: 50px;
+    width : 80%;
+    height: 5vh;
+    font-size: 1em;
+    margin-bottom: 0.5vh;
 }
 
-
-.avatarsBox{
-    background-color: yellowgreen;
-    height: fit-content;
-    width:100%;
-    display: grid;
-    grid-template-columns: repeat(4,auto);
-    grid-template-rows: repeat(2,auto);
-    gap: 0.5em;
+.newPlayer input[type=submit]{
+   width: 80%;
 }
 .disableClick{
     pointer-events:none ;
-    color: blue;
 }
-.clickable{
-    color: red;
-    background-color: chartreuse;
+@media (max-width:540px) {
+
+    .newPlayer{
+        width: 100%;
+        height: 90%;
+    }
+    
+      .avatarsBox{
+        width:90%;
+        height:70%;
+        grid-template-columns: repeat(3,1fr);
+      }
+   .newPlayer .buttons{
+        height: 30px;
+        width:10px;
+        text-align: center;
+        font-size: 12px;
+        font-family: var(--bodyFont);
+    }
+
 }
-.clickable:hover{
-    background-color: cornflowerblue;
-    cursor: pointer;
-}
+@media (min-width:540px) and (max-width:700px) {
+    .newPlayer h1 {
+        font-size: 25px;
+      }
+
+    
+    .newPlayer .buttons{
+        height: 30px;
+        width:10px;
+        text-align: center;
+        font-size: 12px;
+        font-family: var(--bodyFont);
+    }
+  }

@@ -7,7 +7,6 @@ export default function avatar({ avatar, handleChoice }) {
   return (
     <div className="avatar" onClick={handleClick}>
       <img
-        className="avatarImg"
         src={process.env.PUBLIC_URL + `${avatar.src}`}
         alt="avatar"
       />
