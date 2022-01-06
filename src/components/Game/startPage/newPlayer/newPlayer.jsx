@@ -53,7 +53,7 @@ class NewPlayer extends React.Component {
           ))}
         </div>
         <input
-          className={(!this.state.playerAvatar || !this.state.playerName)?' buttons disableClick ':" buttons clickable"}
+          className={(!this.state.playerAvatar || !this.state.playerName)?' submit buttons disableClick ':" submit buttons clickable"}
           type="submit"
           value="done"
           onClick={(e) =>
