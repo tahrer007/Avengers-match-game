@@ -1,4 +1,5 @@
 import "./sreachResults.css";
+import "../../../../../app.css"
 export default function SearchResults({ player ,handleChoice }) { 
 
     const handleClick =()=>{
@@ -9,8 +10,8 @@ export default function SearchResults({ player ,handleChoice }) {
       }
  
   return (
-    <li onClick={handleClick}>
-      <div className="playerCard">
+    
+      <div className="playerCard" onClick={handleClick}>
         <div className="avatarBox">
           <img
             className="avatarImg"
@@ -19,8 +20,8 @@ export default function SearchResults({ player ,handleChoice }) {
           />
         </div>
 
-        <h3>{player.name}</h3>
+        <div className="playerName"><h1>{player.name}</h1></div>
       </div>
-    </li>
+    
   );
 }

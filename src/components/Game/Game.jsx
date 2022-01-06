@@ -22,11 +22,12 @@ function Game() {
   const [level, setLevel] = useState("");
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] = useState(false);
+  const [lastGameResult,setLastResult]=useState(0)
 
   //start the game
   useEffect(() => {
     suffleCards();
-    console.log(playerData.lastScore);
+    setLastResult(playerData.lastGameScore);
   }, [level]);
 
   //check turn results
@@ -55,7 +56,7 @@ function Game() {
   }, [choiceOne, choiceTwo]);
   //update  if player pass his last score
   useEffect(() => {
-    if (playerData.isOldPlayer && gameScore > playerData.lastScore)
+    if (playerData.isOldPlayer && gameScore > playerData.lastGameScore)
       setpassHiestResult(true);
   }, [gameScore]);
   //check if win the game
@@ -71,6 +72,7 @@ function Game() {
 
   //get and handle player data
   const getPlayerData = (player) => {
+    console.log(player)
     setPlayerData(player);
   };
   //suffles cards
@@ -148,7 +150,7 @@ function Game() {
           className="lastResults"
           style={{ display: playerData.isOldPlayer ? "block" : "none" }}
         >
-          <h3> your last score : {playerData.lastScore} </h3>
+          <h3> your last score : {lastGameResult} </h3>
         </div>
         <div
           className="PassLastResult"

@@ -1,29 +1,33 @@
-.oldPlayer{
-    width: 70%;
-    height: fit-content;
-    background-color: tomato;
-    display: flex;
-    flex-direction: column;
-    padding:0.5em;
-    box-sizing: border-box;
-    justify-content: space-evenly;
+.oldPlayer {
+  width: 75%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.1em;
+  box-sizing: border-box;
+  justify-content: flex-start;
+  align-items: center;
+}
+.playerInput {
+  width: 100%;
+  height: 20%;
+
+}
+.playersList {
+  width: 100%;
+  height: 70%;
+  overflow-y: auto;
+}
+.oldPlayer input[type="text"] {
+  width: 90%;
+  height: 50px;
+  font-size: 1.5vw;
+}
+.playerNotFound h2 {
+  color: #f8d210;
 }
 
-.playerNotFound{
-    color: crimson;
-}
-
-.oldPlayer label{
-    font-size:2em;
-  }
-  .oldPlayer input[type=text]{
-      width : 100%;
-      height: 50px;
-  }
-  .playerData{
-      background-color: chartreuse;
-  }
-   img{
-    max-width: 100%;
-    border-radius: 50%;  
+img {
+  max-width: 100%;
+  border-radius: 50%;
 }

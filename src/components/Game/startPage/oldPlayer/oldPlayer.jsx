@@ -1,5 +1,6 @@
 import React from "react";
 import "./oldPlayer.css";
+import "../../../../app.css"
 import axios from "axios";
 import SearchResults from "./searchResults/searchResults";
 class OldPlayer extends React.Component {
@@ -13,7 +14,8 @@ class OldPlayer extends React.Component {
   };
   handleChoice =(player)=>{
     const isOldPlayer = true ; 
-    this.props.sendPlayerData(player.name, player.avatar, player.LastGameScore, isOldPlayer,player.id);
+    console.log()
+    this.props.sendPlayerData(player.name, player.avatar, player.lastGameScore, isOldPlayer,player.id);
   }
   handleTypingChange = (event) => {
     this.setState({ searchInput: event.target.value });
@@ -52,8 +54,8 @@ class OldPlayer extends React.Component {
     return (
       <div className="oldPlayer">
         <div className="playerInput">
-          <label>
-            type your name: <br />
+          <h1>  type your name:  </h1>
+           
             <input
               type="text"
               name="name"
@@ -61,7 +63,7 @@ class OldPlayer extends React.Component {
               onChange={this.handleTypingChange}
               placeholder="type your name"
             />
-          </label>
+         
         </div>
         <div
           className="playerNotFound"
@@ -72,15 +74,16 @@ class OldPlayer extends React.Component {
                 : "none",
           }}
         >
-          player not found type again !!
+          <h2>player not found type again !!</h2>
         </div>
         {
           <div className="playersList">
-            <ul>
+          
               {this.state.playersArr.map((player) => (
+                
                 <SearchResults key={player.id} player={player} handleChoice={this.handleChoice} />
               ))}
-            </ul>
+            
           </div>
         }
       </div>

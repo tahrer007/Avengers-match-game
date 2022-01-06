@@ -15,14 +15,15 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
   const passPlayerData = (
     playerName,
     avatar,
-    LastGameScore,
+    lastGameScore,
     isOldPlayer,
     id
   ) => {
+    
     setPlayerData({
       name: playerName,
       avatar: avatar,
-      LastGameScore: LastGameScore,
+      lastGameScore: lastGameScore,
       isOldPlayer: isOldPlayer,
       id: id,
     });
