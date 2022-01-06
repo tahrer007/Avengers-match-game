@@ -13,7 +13,7 @@ function GameLevels({toChooseLevel}) {
   return (
     <div className="AllLevelBox">
       {levelsArr.map((level, index) => (
-          <div key={index} className="levelBox" onClick={()=>handleClick(level)}>
+          <div key={index} className=" buttons" onClick={()=>handleClick(level)}>
              <h3>{level.name}</h3> 
              <h6>{level.text}</h6>
           </div>

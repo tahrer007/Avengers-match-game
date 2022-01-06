@@ -1,11 +1,5 @@
 .AllLevelBox{
     display: flex;
     flex-direction: column;
-    background-color: chocolate;
-    border: 2px solid black;
-}
-.levelBox{
-    margin: 10px;
-    text-align: center;
-    border: 2px solid blue;
+   
 }
