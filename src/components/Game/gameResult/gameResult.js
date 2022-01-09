@@ -19,7 +19,7 @@ export default function GameResult({ win, gameScore, player }) {
     } else {
       Create(player.name, player.avatar, gameScore);
     }
-  }, [player]);
+  }, [player,gameScore]);
 
   return (
 
