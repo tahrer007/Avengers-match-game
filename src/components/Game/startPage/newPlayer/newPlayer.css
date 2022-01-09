@@ -25,16 +25,16 @@
   box-sizing: border-box;
   margin-bottom: 1em;
 }
-.submit {
-  width: 100%;
-}
+
 
 .avatarsBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   box-sizing: border-box;
   width: fit-content;
-  height: min-content;
+  height: 90%;
+  width: 100%;
+  background-color: violet;
 }
 
 .newPlayer input[type="text"],
