@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import "./oldPlayer.css";
 import "../../../../app.css";
 import axios from "axios";
@@ -96,4 +96,4 @@ class OldPlayer extends React.Component {
     );
   }
 }
-export default OldPlayer;
+export default OldPlayer;*/
