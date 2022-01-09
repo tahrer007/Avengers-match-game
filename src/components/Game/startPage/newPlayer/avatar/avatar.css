@@ -19,3 +19,9 @@
     cursor: pointer;
     top: -20px;
 }
+@media (orientation: landscape) and (max-width: 1000px) {
+    .avatar img{
+        max-width: 50%;  
+    }
+
+  }

@@ -71,11 +71,11 @@ function Game() {
         setIsWin(true);
       }
     }
-  }, [FlipedCardCount]);
+  }, [FlipedCardCount,cards]);
 
   //get and handle player data
   const getPlayerData = (player) => {
-    console.log(player);
+    //console.log(player);
     setPlayerData(player);
   };
   //suffles cards
