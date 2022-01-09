@@ -34,7 +34,7 @@ class Scores extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="topScores">
         <h1>player heighest Scores : </h1>
         <div className="scoresList">
           {this.state.highestScoresArr.map((player) => (

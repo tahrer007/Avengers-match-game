@@ -39,6 +39,7 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
   };
   return (
     <div className="startPage">
+       <div id="info" className="background"></div>
       <div
         className="choicePlayerType"
         style={{ display: newPlayer || oldplayer ? "none" : "block" }}

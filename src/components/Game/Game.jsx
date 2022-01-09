@@ -22,13 +22,15 @@ function Game() {
   const [level, setLevel] = useState("");
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] = useState(false);
-  const [lastGameResult,setLastResult]=useState(0)
+  const [lastGameResult, setLastResult] = useState(0);
+
 
   //start the game
   useEffect(() => {
-    suffleCards();
+    if(!playerData || !level) return ; 
     setLastResult(playerData.lastGameScore);
-  }, [level]);
+    suffleCards();
+  }, [level,playerData]);
 
   //check turn results
   useEffect(() => {
@@ -62,17 +64,18 @@ function Game() {
   //check if win the game
   useEffect(() => {
     if (FlipedCardCount) {
-      console.log(FlipedCardCount, cards.length);
+      if(!FlipedCardCount || !cards) return ; 
+      //console.log(FlipedCardCount, cards.length);
       if (FlipedCardCount === cards.length / 2) {
         console.log("you won the game ");
         setIsWin(true);
       }
     }
-  }, [FlipedCardCount]);
+  }, [FlipedCardCount,cards]);
 
   //get and handle player data
   const getPlayerData = (player) => {
-    console.log(player)
+    //console.log(player);
     setPlayerData(player);
   };
   //suffles cards
