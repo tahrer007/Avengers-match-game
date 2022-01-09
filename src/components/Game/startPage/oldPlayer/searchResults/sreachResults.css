@@ -37,3 +37,12 @@
 .playerName h1:hover{
     color: #2E3055;
 }
+@media (orientation: landscape) and (max-width: 1000px) {
+    .topScores h1 {
+      font-size: var(--mobileHeadersSize);
+    }
+    .playerCard img{
+        max-width: 50%;
+    }
+    
+  }

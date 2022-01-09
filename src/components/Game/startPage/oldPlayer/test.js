@@ -1,6 +1,6 @@
 import React from "react";
 import "./oldPlayer.css";
-import "../../../../app.css"
+import "../../../../app.css";
 import axios from "axios";
 import SearchResults from "./searchResults/searchResults";
 class OldPlayer extends React.Component {
@@ -12,11 +12,17 @@ class OldPlayer extends React.Component {
     playersArr: [],
     searchDone: false,
   };
-  handleChoice =(player)=>{
-    const isOldPlayer = true ; 
-    console.log()
-    this.props.sendPlayerData(player.name, player.avatar, player.lastGameScore, isOldPlayer,player.id);
-  }
+  handleChoice = (player) => {
+    const isOldPlayer = true;
+    console.log();
+    this.props.sendPlayerData(
+      player.name,
+      player.avatar,
+      player.lastGameScore,
+      isOldPlayer,
+      player.id
+    );
+  };
   handleTypingChange = (event) => {
     this.setState({ searchInput: event.target.value });
     if (this.state.typingTimeout) {
@@ -30,7 +36,6 @@ class OldPlayer extends React.Component {
   };
 
   searchPlayerData = async (inputValue) => {
-
     let searchResults;
     try {
       searchResults = await axios.get(
@@ -54,16 +59,16 @@ class OldPlayer extends React.Component {
     return (
       <div className="oldPlayer">
         <div className="playerInput">
-          <h1>  type your name:  </h1>
-           
-            <input
-              type="text"
-              name="name"
-              value={this.state.searchInput}
-              onChange={this.handleTypingChange}
-              placeholder="type your name"
-            />
-         
+          <h1> type your name: </h1>
+
+          <input
+            type="text"
+            name="name"
+            value={this.state.searchInput}
+            onChange={this.handleTypingChange
+            }
+            placeholder="type your name"
+          />
         </div>
         <div
           className="playerNotFound"
@@ -78,12 +83,13 @@ class OldPlayer extends React.Component {
         </div>
         {
           <div className="playersList">
-          
-              {this.state.playersArr.map((player) => (
-                
-                <SearchResults key={player.id} player={player} handleChoice={this.handleChoice} />
-              ))}
-            
+            {this.state.playersArr.map((player) => (
+              <SearchResults
+                key={player.id}
+                player={player}
+                handleChoice={this.handleChoice}
+              />
+            ))}
           </div>
         }
       </div>
