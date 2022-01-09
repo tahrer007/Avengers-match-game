@@ -38,14 +38,14 @@ class NewPlayer extends React.Component {
             value={this.state.playerName}
             onChange={this.handleNameChange}
           />
-          <h1> please type your password: </h1>
+        {/*  <h1> please type your password: </h1>
           <input
             type="password"
             name="password"
             //value={this.state.playerName}
             //onChange={this.handleNameChange}
             placeholder="type your password"
-          />
+          />*/}
         </div>
         <div className="avatarsTEXTbox">
           <h1> pick your avatar </h1>
