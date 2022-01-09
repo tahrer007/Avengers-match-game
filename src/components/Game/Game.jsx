@@ -7,7 +7,7 @@ import "./card/card.css";
 import "../../app.css";
 import allImages from "../../data/imagesArr";
 import getRandomImages from "../../js/gatCards";
-import { useState, useEffect, useReducer, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 function Game() {
   const [cards, setcards] = useState([]);
@@ -27,9 +27,10 @@ function Game() {
 
   //start the game
   useEffect(() => {
+    if(!playerData || !level) return ; 
     setLastResult(playerData.lastGameScore);
     suffleCards();
-  }, [level]);
+  }, [level,playerData]);
 
   //check turn results
   useEffect(() => {
@@ -63,7 +64,8 @@ function Game() {
   //check if win the game
   useEffect(() => {
     if (FlipedCardCount) {
-      console.log(FlipedCardCount, cards.length);
+      if(!FlipedCardCount || !cards) return ; 
+      //console.log(FlipedCardCount, cards.length);
       if (FlipedCardCount === cards.length / 2) {
         console.log("you won the game ");
         setIsWin(true);
