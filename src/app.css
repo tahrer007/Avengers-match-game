@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  
 }
 :root {
   --bodyFont: avengers;
@@ -38,8 +39,10 @@
   background-image: url(/public/images/mainBackground.jpg);
   letter-spacing:0.2em;
   text-align: center;
+  position: relative;
   
 }
+
 .background {
   background-position: center;
   background-repeat: no-repeat;
@@ -68,4 +71,24 @@
   background-color: #D07874;
   color: #2E3055;
   box-shadow: 3px 5px #2E3055;
+}
+/*to ask the user to use landscape*/
+#info {display: none;
+width: 100%;
+height: 100%;
+position: absolute;
+top: 0;
+left:0 ; 
+background-image: url(/public/images/rotate.png);
+
+}
+
+/* only when orientation is in portrait mode */
+@media all and (orientation:portrait) {
+    #info {
+         display: block;
+        
+       
+
+    }
 }

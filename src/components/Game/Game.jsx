@@ -7,7 +7,7 @@ import "./card/card.css";
 import "../../app.css";
 import allImages from "../../data/imagesArr";
 import getRandomImages from "../../js/gatCards";
-import { useState, useEffect ,useReducer , useCallback } from "react";
+import { useState, useEffect, useReducer, useCallback } from "react";
 
 function Game() {
   const [cards, setcards] = useState([]);
@@ -22,21 +22,13 @@ function Game() {
   const [level, setLevel] = useState("");
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] = useState(false);
-  const [lastGameResult,setLastResult]=useState(0) ;
- 
+  const [lastGameResult, setLastResult] = useState(0);
 
-  /*function MyComponent() {
-    const handleClick = useCallback(() => {
-      // handle the click event
-    }, []);*/
-
-  
 
   //start the game
   useEffect(() => {
     setLastResult(playerData.lastGameScore);
     suffleCards();
-    
   }, [level]);
 
   //check turn results
@@ -81,7 +73,7 @@ function Game() {
 
   //get and handle player data
   const getPlayerData = (player) => {
-    console.log(player)
+    console.log(player);
     setPlayerData(player);
   };
   //suffles cards
