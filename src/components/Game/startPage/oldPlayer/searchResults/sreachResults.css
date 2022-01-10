@@ -1,48 +1,36 @@
-.playerCard{
-    width: 100% ; 
-    max-height:20%;
-    display: flex ;
-    justify-content: flex-start;
-    box-sizing: border-box;
-    
+.playerCard {
+  width: 100%;
+  max-height: 20%;
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
 }
-.avatarBox{
-    max-width: 20%;
-    max-height: 95%;
-
+.avatarBox {
+  max-width: 20%;
+  max-height: 95%;
 }
-.playerCard img{
-    max-width: 90%;
-    max-height:90%;
-    border-radius: 50%;
-    object-fit: fill;
+.playerCard img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 50%;
+  object-fit: fill;
 }
-.playerName{
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.playerName {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.playerCard:hover {
+  cursor: pointer;
 
-.playerCard:hover{
-    cursor: pointer;
-    
-    background-color: #D07874;
-    
-    box-shadow: 3px 5px #2E3055;
-    color: #2E3055;
+  background-color: #d07874;
 
+  box-shadow: 3px 5px #2e3055;
+  color: #2e3055;
 }
-.playerName h1:hover{
-    color: #2E3055;
+.playerName h1:hover {
+  color: #2e3055;
 }
-@media (orientation: landscape) and (max-width: 1000px) {
-    .topScores h1 {
-      font-size: var(--mobileHeadersSize);
-    }
-    .playerCard img{
-        max-width: 50%;
-    }
-    
-  }
+

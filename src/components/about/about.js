@@ -23,7 +23,7 @@ class About extends React.Component {
           levels you have specific number of cards and four lives. You should try
           to match as you can before the depletion of lives.<br/>
              in the <span id="ninja">Ninja</span> level,
-          you have 48 cards and two minutes to match as much as you can. in all of
+          you have 48 cards and one minute to match as much as you can. in all of
           the levels every match give you 100 points.
         </p>
 

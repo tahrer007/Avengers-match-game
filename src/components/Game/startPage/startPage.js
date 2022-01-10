@@ -8,9 +8,7 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
   const [newPlayer, setNewPlayer] = useState(false);
   const [oldplayer, setOldPlayer] = useState(false);
   const [chooseLevel, setchooseLevel] = useState(false);
-  const [playerData, setPlayerData] = useState({
-   
-  });
+  const [playerData, setPlayerData] = useState({});
 
   const passPlayerData = (
     playerName,
@@ -19,7 +17,6 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
     isOldPlayer,
     id
   ) => {
-    
     setPlayerData({
       name: playerName,
       avatar: avatar,
@@ -39,7 +36,7 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
   };
   return (
     <div className="startPage">
-       <div id="info" className="background"></div>
+      <div id="info" className="background"></div>
       <div
         className="choicePlayerType"
         style={{ display: newPlayer || oldplayer ? "none" : "block" }}

@@ -43,6 +43,13 @@
   font-size: 3vw;
   color: #d07874;
 }
+.timer {
+  font-size: 3vw;
+  color: #d07874;
+}
+.time{
+  font-size: 5vw;
+}
 
 .lastResults {
   font-size: 1.5vw;

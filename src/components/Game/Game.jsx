@@ -7,7 +7,7 @@ import "./card/card.css";
 import "../../app.css";
 import allImages from "../../data/imagesArr";
 import getRandomImages from "../../js/gatCards";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Game() {
   const [cards, setcards] = useState([]);
@@ -23,14 +23,30 @@ function Game() {
   const [playerData, setPlayerData] = useState({});
   const [passHiestResult, setpassHiestResult] = useState(false);
   const [lastGameResult, setLastResult] = useState(0);
+  const [time, setTime] = useState(60);
+  const [isNinja, setIsNinja] = useState(false);
+  const [timerFlage, setTimerFlage] = useState(false);
+  let intervalRef = useRef();
 
+  //timer
+  const decreaseTime = () => setTime((prev) => prev - 1);
 
   //start the game
   useEffect(() => {
-    if(!playerData || !level) return ; 
+    if (!playerData || !level) return;
     setLastResult(playerData.lastGameScore);
     suffleCards();
-  }, [level,playerData]);
+  }, [level, playerData]);
+
+  useEffect(() => {
+    if (!playerData || !level || !time) return;
+    if (isNinja) {
+      intervalRef.current = setInterval(decreaseTime, 1000);
+      if (time <= 10) setTimerFlage(true);
+      console.log(time);
+      return () => clearInterval(intervalRef.current);
+    }
+  }, [time, level, playerData, timerFlage]);
 
   //check turn results
   useEffect(() => {
@@ -64,7 +80,7 @@ function Game() {
   //check if win the game
   useEffect(() => {
     if (FlipedCardCount) {
-      if(!FlipedCardCount || !cards) return ; 
+      if (!FlipedCardCount || !cards || time) return;
       //console.log(FlipedCardCount, cards.length);
       if (FlipedCardCount === cards.length / 2) {
         console.log("you won the game ");
@@ -101,11 +117,11 @@ function Game() {
       setChoiceTwo(null);
     }, 1000);
   };
-  //get which level from the child (call back function)
-  useEffect(() => {}, []);
 
   const toChooseLevel = (level) => {
     setStart(true);
+    if(level.name==="Ninja") setIsNinja(true) ;
+
     setLevel(level);
   };
 
@@ -146,8 +162,18 @@ function Game() {
           />
         </div>
         <div className="gameScore"> {gameScore}</div>
-        <div className="gameLives">
+        <div
+          className="gameLives"
+          style={{ display: isNinja ? "none" : "block" }}
+        >
           game lives : {gameLives} <br />
+        </div>
+        <div className="timer" style={{ display: isNinja ? "block" : "none" }}>
+          time <br />{" "}
+          <span className="time" style={{ color: timerFlage ? "red" : "" }}>
+            {time}{" "}
+          </span>{" "}
+          <br />
         </div>
         <div
           className="lastResults"
@@ -163,7 +189,7 @@ function Game() {
         </div>
       </div>
 
-      {(isWin || !gameLives) && (
+      {(isWin || !gameLives || !time) && (
         <GameResult win={isWin} gameScore={gameScore} player={playerData} />
       )}
     </div>
