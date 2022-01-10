@@ -27,7 +27,7 @@ function Game() {
   const [time, setTime] = useState(60);
   const [isNinja, setIsNinja] = useState(false);
   const [timerFlage, setTimerFlage] = useState(false);
-  const [isCorrect,setIsCorrect]=useState(false)
+  const [isCorrect, setIsCorrect] = useState(false);
   let intervalRef = useRef();
 
   //timer
@@ -44,29 +44,27 @@ function Game() {
     if (!playerData || !level || !time) return;
     if (isNinja) {
       intervalRef.current = setInterval(decreaseTime, 1000);
+      if (time === 5) playAudio("timeEnding");
       if (time <= 10) setTimerFlage(true);
-      console.log(time);
+      setLives(100000);
       return () => clearInterval(intervalRef.current);
     }
-  }, [time, level, playerData, timerFlage]);
+  }, [time, level, playerData, timerFlage,isNinja]);
 
   //check turn results
   useEffect(() => {
-    
-   
-    
     if (choiceOne && choiceTwo) {
       setdisableClick(true);
 
       if (choiceOne.src === choiceTwo.src) {
+        playAudio("correct");
+        setIsCorrect(true);
         setcards((prevCards) => {
           return prevCards.map((card) => {
             if (card.src === choiceOne.src) {
-              playAudio("correct") ;
-              setIsCorrect(true) ; 
+             
               return { ...card, matched: true };
             } else {
-              if(!isCorrect)playAudio("wrong") ;
               return card;
             }
           });
@@ -75,7 +73,11 @@ function Game() {
         setFlipedCardCount((prevCount) => prevCount + 1);
         resetChioces();
       } else {
-        setLives((prevLives) => prevLives - 1);
+        playAudio("wrong");
+        setTimeout(() => {
+          setLives((prevLives) => prevLives - 1);
+        }, 1000);
+       
         resetChioces();
       }
     }
@@ -84,18 +86,21 @@ function Game() {
   useEffect(() => {
     if (playerData.isOldPlayer && gameScore > playerData.lastGameScore)
       setpassHiestResult(true);
-  }, [gameScore]);
+  }, [gameScore,playerData]);
   //check if win the game
   useEffect(() => {
     if (FlipedCardCount) {
       if (!FlipedCardCount || !cards || time) return;
-      //console.log(FlipedCardCount, cards.length);
       if (FlipedCardCount === cards.length / 2) {
         console.log("you won the game ");
-        setIsWin(true);
+
+        setTimeout(() => {
+          setIsWin(true);
+        }, 1000);
+       
       }
     }
-  }, [FlipedCardCount,cards]);
+  }, [FlipedCardCount, cards,time]);
 
   //get and handle player data
   const getPlayerData = (player) => {
@@ -121,8 +126,7 @@ function Game() {
   //reset choices
   const resetChioces = () => {
     setTimeout(() => {
-
-      if(!isCorrect)playAudio("flip");
+      if (!isCorrect) playAudio("flip");
       setdisableClick(false);
       setChoiceOne(null);
       setChoiceTwo(null);
@@ -132,7 +136,7 @@ function Game() {
 
   const toChooseLevel = (level) => {
     setStart(true);
-    if(level.name==="Ninja") setIsNinja(true) ;
+    if (level.name === "Ninja") setIsNinja(true);
 
     setLevel(level);
   };

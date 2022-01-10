@@ -3,6 +3,7 @@ import click from "../assets/sounds/click.mp3";
 import wrong from "../assets/sounds/wrong.mp3";
 import correct from "../assets/sounds/correct.mp3";
 import flipCard from "../assets/sounds/flipCard.mp3";
+import timeEnding from "../assets/sounds/timeEnding.mp3";
 
 const playAudio = (sound) => {
  let audio;
@@ -26,6 +27,13 @@ const playAudio = (sound) => {
       audio = new Audio(correct);
         audio.play();
       break;
+      
+
+    case "timeEnding":
+      audio = new Audio(timeEnding);
+        audio.play();
+      break;
+      
 
     default:
        audio = new Audio(flipCard);
