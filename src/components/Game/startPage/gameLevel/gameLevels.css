@@ -1,5 +1,13 @@
-.AllLevelBox{
-    display: flex;
-    flex-direction: column;
-   
+.AllLevelBox {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  
+}
+@media (orientation: landscape) and (max-width: 1000px) {
+    .AllLevelBox .buttons {
+       
+        font-size: 1em;
+        margin-bottom: 1em;
+      }
 }
