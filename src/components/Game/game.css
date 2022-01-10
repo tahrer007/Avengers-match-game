@@ -15,6 +15,7 @@
   display: grid;
   padding: 0.1em;
   gap: 0.1vmin;
+  margin-bottom: 0.5em;
 }
 .gameData {
   width: 20%;

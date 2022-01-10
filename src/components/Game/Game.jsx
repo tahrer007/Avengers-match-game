@@ -37,7 +37,16 @@ function Game() {
   useEffect(() => {
     if (!playerData || !level) return;
     setLastResult(playerData.lastGameScore);
-    suffleCards();
+   //suffles cards
+  const suffleCards = () => {
+    let cardsNumbers = level.cardsNum / 2;
+    let takenImages = getRandomImages(allImages, cardsNumbers);
+    const shuffledCards = [...takenImages, ...takenImages]
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({ ...card, id: Math.random() }));
+    setcards(shuffledCards);
+  };
+  suffleCards()
   }, [level, playerData]);
 
   useEffect(() => {
@@ -46,6 +55,7 @@ function Game() {
       intervalRef.current = setInterval(decreaseTime, 1000);
       if (time === 5) playAudio("timeEnding");
       if (time <= 10) setTimerFlage(true);
+     
       setLives(100000);
       return () => clearInterval(intervalRef.current);
     }
@@ -107,15 +117,7 @@ function Game() {
     //console.log(player);
     setPlayerData(player);
   };
-  //suffles cards
-  const suffleCards = () => {
-    let cardsNumbers = level.cardsNum / 2;
-    let takenImages = getRandomImages(allImages, cardsNumbers);
-    const shuffledCards = [...takenImages, ...takenImages]
-      .sort(() => Math.random() - 0.5)
-      .map((card) => ({ ...card, id: Math.random() }));
-    setcards(shuffledCards);
-  };
+  
 
   //handle card choice
   const handleChoice = (card) => {
