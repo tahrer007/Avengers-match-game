@@ -3,17 +3,13 @@ import { useEffect } from "react";
 import Create from "../../../api/create";
 import UpdateData from "../../../api/update";
 import { Link } from "react-router-dom";
-//import playAudio from "../../../js/playSound";
+import playAudio from "../../../js/playSound";
 
 
 export default function GameResult({ win, gameScore, player }) {
-  
-  /*const  playAudio = () => {
-    let audio = new Audio("/src/assets/sounds/gameOver.mp3");
-    audio.play();
-}*/
+ 
   useEffect(() => {
-   // playAudio() ; 
+   playAudio("gameOver") ; 
     if (player.isOldPlayer) {
       UpdateData(player.id, gameScore);
     } else {

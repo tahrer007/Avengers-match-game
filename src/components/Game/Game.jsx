@@ -7,6 +7,7 @@ import "./card/card.css";
 import "../../app.css";
 import allImages from "../../data/imagesArr";
 import getRandomImages from "../../js/gatCards";
+import playAudio from "../../js/playSound";
 import { useState, useEffect, useRef } from "react";
 
 function Game() {
@@ -26,6 +27,7 @@ function Game() {
   const [time, setTime] = useState(60);
   const [isNinja, setIsNinja] = useState(false);
   const [timerFlage, setTimerFlage] = useState(false);
+  const [isCorrect,setIsCorrect]=useState(false)
   let intervalRef = useRef();
 
   //timer
@@ -50,6 +52,9 @@ function Game() {
 
   //check turn results
   useEffect(() => {
+    
+   
+    
     if (choiceOne && choiceTwo) {
       setdisableClick(true);
 
@@ -57,8 +62,11 @@ function Game() {
         setcards((prevCards) => {
           return prevCards.map((card) => {
             if (card.src === choiceOne.src) {
+              playAudio("correct") ;
+              setIsCorrect(true) ; 
               return { ...card, matched: true };
             } else {
+              if(!isCorrect)playAudio("wrong") ;
               return card;
             }
           });
@@ -107,14 +115,18 @@ function Game() {
   //handle card choice
   const handleChoice = (card) => {
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    playAudio("flip");
   };
 
   //reset choices
   const resetChioces = () => {
     setTimeout(() => {
+
+      if(!isCorrect)playAudio("flip");
       setdisableClick(false);
       setChoiceOne(null);
       setChoiceTwo(null);
+      setIsCorrect(false);
     }, 1000);
   };
 
