@@ -4,7 +4,6 @@ import playAudio from "../../../../../js/playSound";
 export default function SearchResults({ player ,handleChoice }) { 
 
     const handleClick =()=>{
-
         handleChoice(player) ; 
         playAudio("click")
         

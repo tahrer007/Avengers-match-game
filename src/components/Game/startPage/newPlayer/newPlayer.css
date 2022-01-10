@@ -16,6 +16,9 @@
   width: 98%;
   height: fit-content;
   margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 .avatarsTEXTbox {
   width: 98%;
@@ -40,11 +43,12 @@
 .newPlayer input[type="text"],
 .newPlayer input[type="password"],
 .newPlayer input[type="submit"] {
-  width: 80%;
+  width: 100%;
   height: 5vh;
   font-size: 2vw;
   margin-bottom: 0.5vh;
   text-align: center;
+  display: block;
 }
 .newPlayer input[type="submit"] {
   height: max-content;

@@ -1,6 +1,6 @@
 import React from "react";
 import "./oldPlayer.css";
-import "../../../../app.css"
+import "../../../../app.css";
 import axios from "axios";
 import SearchResults from "./searchResults/searchResults";
 class OldPlayer extends React.Component {
@@ -12,25 +12,33 @@ class OldPlayer extends React.Component {
     playersArr: [],
     searchDone: false,
   };
-  handleChoice =(player)=>{
-    const isOldPlayer = true ; 
-    console.log()
-    this.props.sendPlayerData(player.name, player.avatar, player.lastGameScore, isOldPlayer,player.id);
-  }
+  handleChoice = (player) => {
+    const isOldPlayer = true;
+    console.log();
+    this.props.sendPlayerData(
+      player.name,
+      player.avatar,
+      player.lastGameScore,
+      isOldPlayer,
+      player.id
+    );
+  };
   handleTypingChange = (event) => {
+    console.log(event.target.value);
     this.setState({ searchInput: event.target.value });
     if (this.state.typingTimeout) {
       clearTimeout(this.state.typingTimeout);
     }
     this.setState({
       typingTimeout: setTimeout(() => {
+        console.log(event.target.value);
         this.searchPlayerData(this.state.searchInput);
       }, 500),
     });
   };
 
   searchPlayerData = async (inputValue) => {
-
+    console.log(inputValue);
     let searchResults;
     try {
       searchResults = await axios.get(
@@ -49,14 +57,57 @@ class OldPlayer extends React.Component {
       console.log(error);
     }
   };
+  componentDidUpdate() {
+    console.log();
+  }
 
   render() {
     return (
       <div className="oldPlayer">
-        <div className="playerInput">
+        <div className="playerInputBox">
+          <h1> type your name: </h1>
+          <input
+            type="text"
+            name="name"
+            value={this.state.searchInput}
+            onChange={this.handleTypingChange}
+            placeholder="type your name"
+          />
+        </div>
+        <div
+          className="playerNotFound"
+          style={{
+            display:
+              !this.state.isPlayerFound && this.state.searchDone
+                ? "block"
+                : "none",
+          }}
+        >
+          <h2>player not found type again !!</h2>
+        </div>
+
+        {
+          <div className="playersList">
+          
+              {this.state.playersArr.map((player) => (
+                
+                <SearchResults key={player.id} player={player} handleChoice={this.handleChoice} />
+              ))}
+            
+          </div>
+        }
+
+      </div>
+    );
+  }
+}
+export default OldPlayer;
+/*
+
+<div className="playerInput">
           <h1>  type your name:  </h1>
-           
-            <input
+         
+             <input
               type="text"
               name="name"
               value={this.state.searchInput}
@@ -86,8 +137,8 @@ class OldPlayer extends React.Component {
             
           </div>
         }
-      </div>
-    );
-  }
-}
-export default OldPlayer;
+
+
+
+
+*/
