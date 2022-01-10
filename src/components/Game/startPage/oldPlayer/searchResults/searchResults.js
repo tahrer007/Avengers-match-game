@@ -1,11 +1,12 @@
 import "./sreachResults.css";
-import "../../../../../app.css"
+import "../../../../../app.css";
+import playAudio from "../../../../../js/playSound";
 export default function SearchResults({ player ,handleChoice }) { 
 
     const handleClick =()=>{
 
         handleChoice(player) ; 
-        
+        playAudio("click")
         
       }
  

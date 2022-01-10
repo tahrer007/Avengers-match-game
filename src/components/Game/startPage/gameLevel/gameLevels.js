@@ -1,4 +1,5 @@
 import "./gameLevels.css";
+import playAudio from "../../../../js/playSound";
 const levelsArr = [
   { name: "Easy", text: "12 cards", cardsNum: 12 ,rows :3 ,cols : 4 },
   { name: "Intermediate", text: "24 cards", cardsNum: 24 ,rows :4 ,cols : 6},
@@ -8,7 +9,10 @@ const levelsArr = [
 function GameLevels({toChooseLevel}) {
 
     const handleClick = (level)=>{
+      playAudio("click")
         toChooseLevel(level);
+      
+            
     }
   return (
     <div className="AllLevelBox">

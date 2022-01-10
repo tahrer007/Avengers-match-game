@@ -1,7 +1,9 @@
 import "./avatar.css";
+import playAudio from "../../../../../js/playSound";
 
 export default function avatar({ avatar, handleChoice }) {
   const handleClick = () => {
+    playAudio("click")
     handleChoice(avatar.src);
   };
   return (

@@ -3,6 +3,7 @@ import NewPlayer from "./newPlayer/newPlayer";
 import { useState } from "react";
 import OldPlayer from "./oldPlayer/oldPlayer";
 import GameLevels from "./gameLevel/gameLevels";
+import playAudio from "../../../js/playSound";
 
 const StartPage = ({ toChooseLevel, getPlayerData }) => {
   const [newPlayer, setNewPlayer] = useState(false);
@@ -32,6 +33,7 @@ const StartPage = ({ toChooseLevel, getPlayerData }) => {
     toChooseLevel(level);
   };
   const handlePlayerType = (playerType) => {
+     playAudio("click")
     playerType === "new" ? setNewPlayer(true) : setOldPlayer(true);
   };
   return (

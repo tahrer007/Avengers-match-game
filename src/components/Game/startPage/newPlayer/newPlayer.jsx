@@ -3,6 +3,7 @@ import Avatar from "./avatar/avatar";
 import React from "react";
 import "./newPlayer.css";
 import "../../../../app.css";
+import playAudio from "../../../../js/playSound";
 class NewPlayer extends React.Component {
   state = {
     playerName: "",
@@ -19,7 +20,6 @@ class NewPlayer extends React.Component {
 
   addPlayer = (e, name, avatar) => {
     const isOldPlayer = false;
-
     e.preventDefault();
     let lastGameScore = 0;
     this.props.sendPlayerData(name, avatar, lastGameScore, isOldPlayer);
@@ -38,7 +38,7 @@ class NewPlayer extends React.Component {
             value={this.state.playerName}
             onChange={this.handleNameChange}
           />
-        {/*  <h1> please type your password: </h1>
+          {/*  <h1> please type your password: </h1>
           <input
             type="password"
             name="password"
@@ -60,7 +60,6 @@ class NewPlayer extends React.Component {
             ))}
           </div>
         </div>
-     
 
         <input
           className={
@@ -70,13 +69,11 @@ class NewPlayer extends React.Component {
           }
           type="submit"
           value="done"
-          onClick={(e) =>
-            this.addPlayer(e, this.state.playerName, this.state.playerAvatar)
-          }
+          onClick={(e) => {
+            playAudio("click");
+            this.addPlayer(e, this.state.playerName, this.state.playerAvatar);
+          }}
         />
-
-       
-        
       </div>
     );
   }
