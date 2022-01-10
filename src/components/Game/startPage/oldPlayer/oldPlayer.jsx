@@ -83,7 +83,7 @@ class OldPlayer extends React.Component {
                 : "none",
           }}
         >
-          <h2>player not found type again !!</h2>
+          <h2>player not found try again !!</h2>
         </div>
 
         {
