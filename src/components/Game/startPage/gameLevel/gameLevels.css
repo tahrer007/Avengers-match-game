@@ -3,12 +3,12 @@
   flex-direction: column;
   height: 90%;
   justify-content: center;
-  
+}
+.AllLevelBox .buttons {
+  margin-bottom: 1em;
 }
 @media (orientation: landscape) and (max-width: 1000px) {
-    .AllLevelBox .buttons {
-       
-        font-size: 1em;
-        margin-bottom: 1em;
-      }
+  .AllLevelBox .buttons {
+    font-size: 1em;
+  }
 }
