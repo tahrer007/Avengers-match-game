@@ -31,7 +31,7 @@ class NewPlayer extends React.Component {
     return (
       <div className="newPlayer">
         <div className="playerInputBox">
-          <h1> type your nickName: </h1>
+          <h1> enter your nickName: </h1>
           <input
             type="text"
             name="name"
@@ -48,7 +48,7 @@ class NewPlayer extends React.Component {
           />*/}
         </div>
         <div className="avatarsTEXTbox">
-          <h1> pick your avatar </h1>
+          <h1> choose your avatar </h1>
 
           <div className="avatarsBox">
             {avatarsArr.map((avatar, index) => (
