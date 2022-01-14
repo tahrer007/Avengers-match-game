@@ -37,6 +37,7 @@ class NewPlayer extends React.Component {
             name="name"
             value={this.state.playerName}
             onChange={this.handleNameChange}
+            maxLength={10}
           />
           {/*  <h1> please type your password: </h1>
           <input
