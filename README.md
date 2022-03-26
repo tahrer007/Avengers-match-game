@@ -1,9 +1,10 @@
 AVENGERS MATCH is flash card memory game.
+![start](/src/assets/images/readme/start.png)
 the game has four levels,
 easy, intermediate, hard and Ninja. 
 * ### desktop
 ![desktop](/src/assets/images/readme/levels.png "Optional Title")
-![desktop](/src/assets/images/readme/levels2.png "Optional Title")
+
 
 
 
