@@ -15,6 +15,6 @@ in this porject i used  :
 4.	mokApi
 5.	crud
 
-link to netlify :
+live demo :
 https://tahrer-mid-project.netlify.app/
 
