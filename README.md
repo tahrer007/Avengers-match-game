@@ -10,19 +10,12 @@
 
 
 
-#### in the easy, intermediate and hard
-#### levels you have specific number of cards and four lives. You should try
-#### to match as you can before the depletion of lives .
-#### in the Ninja level,
-#### you have 48 cards and two minutes to match as much as you can. in all of
-#### the levels every match give you 100 points.
+#### in the easy, intermediate and hard levels the palyer  have specific number of cards and four lives. in the Ninja level, cotains 48 cards and two minutes to match as much as who can. in all of the levels every match give the player 100 points.
 ![ninja](/src/assets/images/readme/ninja.png) 
 
 ### the game also shows the players top five scores 
   ![topScores](/src/assets/images/readme/topScores.png) 
 
-
- 
 
 ### in this porject i used  :
 1.	Routers. 
