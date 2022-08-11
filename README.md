@@ -1,4 +1,8 @@
 # AVENGERS MATCH
+
+## live demo :
+https://tahrer-mid-project.netlify.app/
+
 ![start](/src/assets/images/readme/start.png)
 ## about the game 
 ### AVENGERS MATCH is flash card memory game.it has four levels,easy, intermediate, hard and Ninja. 
@@ -24,6 +28,5 @@
 4.	mokApi
 5.	crud
 
-## live demo :
-https://tahrer-mid-project.netlify.app/
+
 
